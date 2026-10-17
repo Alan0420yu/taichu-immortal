@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>太初仙域 V1.8 · 天賦覺醒｜公開體驗版</title>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>太初仙域 V1.9.1 · 仙城重塑（第一階段）</title>
 <style>
 :root{--bg:#102019e8;--edge:#759b78;--gold:#f4d58a;--ink:#f6f0d9}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#101d1b;color:var(--ink);font-family:system-ui,"Microsoft JhengHei",sans-serif}#world{position:fixed;inset:0;width:100%;height:100%;display:block}#hud{pointer-events:none;position:fixed;inset:0}#hud>*{pointer-events:auto}.panel{background:var(--bg);border:1px solid #617f70;border-radius:14px;box-shadow:0 6px 24px #0007;backdrop-filter:blur(8px)}#stats{position:absolute;left:14px;top:14px;width:250px;padding:14px}h1{font-size:19px;color:var(--gold);margin:0 0 6px}#status{font-size:12px;color:#c9d7c8}.meter{margin:7px 0}.meter>div:first-child{font-size:12px;display:flex;justify-content:space-between}.track{height:8px;border-radius:8px;background:#09100c;overflow:hidden}.fill{width:40%;height:100%;transition:width .15s}.red{background:#dd776b}.blue{background:#68a9db}.gold{background:#e4c66f}.green{background:#66be8b}#zone{position:absolute;top:13px;left:50%;transform:translateX(-50%);padding:10px 20px;text-align:center;min-width:180px}#zoneName{font-weight:bold;color:var(--gold)}#zoneInfo{font-size:12px;color:#c5d7ce}#menu{position:absolute;right:14px;top:14px;padding:10px;width:136px;display:grid;gap:6px}button,select{font-family:inherit;background:#2d5142;color:#fff6df;border:1px solid #789176;border-radius:8px;padding:8px 10px;cursor:pointer}button:hover{background:#46745a}button:disabled{opacity:.4;cursor:default}.highlight{background:#86642e;border-color:#d3b17c}#quest{position:absolute;right:14px;top:310px;width:215px;padding:10px;font-size:12px;line-height:1.6}#log{position:absolute;left:14px;bottom:14px;width:300px;max-height:138px;overflow:auto;padding:10px;font-size:12px;line-height:1.6}#log div{border-bottom:1px solid #ffffff13;padding:2px 0}#bar{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:7px;padding:8px;max-width:calc(100% - 340px)}#bar button{min-width:69px;font-size:12px}#prompt{position:absolute;left:50%;bottom:105px;transform:translateX(-50%);padding:9px 14px;display:none;text-align:center;font-size:13px;white-space:nowrap}#settings{position:absolute;right:14px;bottom:14px;padding:9px;font-size:11px;color:#c8d6d3}#modal{position:fixed;inset:0;z-index:9;background:#05120dc9;display:grid;place-items:center;padding:12px}#modal[hidden]{display:none}.sheet{width:min(670px,100%);max-height:88vh;overflow:auto;background:#14271e;border:1px solid #869d81;border-radius:16px;padding:20px;box-shadow:0 15px 75px #000b}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}.sheet h2{margin:0;color:var(--gold)}.sheet p{line-height:1.7;color:#c9d8cc}.rows{display:grid;gap:9px}.item{padding:11px;background:#203b2b;border:1px solid #486450;border-radius:9px;display:flex;justify-content:space-between;align-items:center;gap:10px}.item>div{flex:1}.item small{color:#b1c7b6;display:block;margin-top:4px}.flex{display:flex;gap:8px;flex-wrap:wrap}select{width:100%}.note{font-size:12px;color:#b2c8bb}#error{position:fixed;inset:0;z-index:30;display:none;place-items:center;background:#101d1b;padding:30px;text-align:center;line-height:1.8}#flash{position:fixed;inset:0;pointer-events:none;background:#ffedbd;opacity:0;transition:opacity .22s}#flash.on{opacity:.25;transition:none}@media(max-width:800px){#stats{width:185px;padding:9px}#menu{width:110px}#quest{top:260px;width:165px}#zone{display:none}#log{width:220px;max-height:95px}#bar{left:50%;bottom:112px;max-width:calc(100% - 20px);width:95%;justify-content:center;flex-wrap:wrap}#bar button{min-width:53px;padding:5px}#settings{display:none}#prompt{bottom:205px}}
 #worldLabels{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}.sceneTag{position:absolute;transform:translate(-50%,-100%);border:1px solid #d6bb7d;color:#fff7d7;background:linear-gradient(135deg,rgba(29,46,37,.94),rgba(63,75,55,.91));border-radius:10px;padding:7px 12px;font-weight:700;font-size:13px;white-space:nowrap;box-shadow:0 3px 16px #09150caa;text-align:center;text-shadow:0 1px 2px #0008}.sceneTag small{display:block;color:#cfe0c8;font-size:10px;font-weight:400;margin-top:2px}.sceneTag.portal{border-color:#92d6f1;background:#153951ed}.sceneTag.herb{border-color:#8ddeac;background:#1b4535e8}.sceneTag.npc{border-color:#d8bf82}.sceneTag.monster{border-color:#e5a384;background:rgba(67,30,29,.9)}.sceneTag strong{color:#ffdf91}.sceneTag.hidden{display:none}#audioControl{position:absolute;right:14px;bottom:69px;padding:9px 11px;display:grid;gap:6px;font-size:11px;width:176px}#audioControl button{padding:7px}#audioControl label{display:flex;gap:8px;align-items:center;justify-content:space-between}#audioControl input{width:93px;accent-color:#dfc78d}#stats{background:linear-gradient(145deg,#1c3529ed,#172c28ee)}#zone{background:linear-gradient(120deg,#24463bcf,#304f48d8)}#bar{background:linear-gradient(120deg,#182f2aee,#2b493eee)}@media(max-width:800px){#audioControl{right:6px;bottom:8px;width:145px}#audioControl input{width:60px}.sceneTag{font-size:10px;padding:5px 7px}} #menu{max-height:calc(100dvh - 28px);overflow-y:auto;overscroll-behavior:contain;z-index:5;scrollbar-width:thin}#menu .highlight:first-child{position:sticky;top:0;z-index:2;box-shadow:0 3px 10px #0008;font-weight:700;border:2px solid #f4d58a}#menu button{min-height:34px} @media(max-height:680px){#menu{max-height:calc(100dvh - 24px)}}
-</style></head><body>
+</style><style id="v320-map-style">.realm-map320{color:#eaf8ef}.realm-location320{font-size:1.13rem;padding:10px 12px;background:rgba(45,115,93,.25);border-radius:10px}.realm-hint320{font-size:.85rem;opacity:.84;line-height:1.6}.realm-grid320{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}.realm-cell320{position:relative;min-height:115px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;border:1px solid #607b75;background:linear-gradient(135deg,#203b39,#172d32);border-radius:10px;padding:7px 3px}.realm-cell320 b{font-size:.87rem}.realm-cell320 small{font-size:.72rem;opacity:.78}.realm-symbol320{font-size:1.5rem}.realm-here320{border:2px solid #f6da75;background:linear-gradient(140deg,#32695a,#295a65);box-shadow:0 0 16px rgba(245,209,104,.5),inset 0 0 12px rgba(246,215,120,.16)}.realm-marker320{color:#ffeb8b;font-size:.8rem;animation:mapPulse320 1.6s infinite alternate}.realm-locked320{font-size:.7rem;color:#f3b9a6}.realm-unknown320{opacity:.48}@keyframes mapPulse320{to{opacity:.5}}@media(max-width:480px){.realm-cell320{min-height:91px}.realm-cell320 b{font-size:.72rem}.realm-cell320 small{font-size:.62rem}}</style></head><body>
 <canvas id="world" aria-label="太初仙域 3D 修仙世界"></canvas><div id="flash"></div><div id="worldLabels" aria-hidden="true"></div>
-<div id="hud"><div id="stats" class="panel"><h1>✦ 太初仙域</h1><div id="status"></div><div id="meters"></div><div id="resources" class="note"></div></div><div id="zone" class="panel"><div id="zoneName"></div><div id="zoneInfo"></div></div><div id="menu" class="panel"><button onclick="openPanel('character')">☯ 角色</button><button onclick="openPanel('skills')">✦ 功法</button><button onclick="openPanel('talents')">🌟 天賦</button><button onclick="openPanel('warehouse')">🏛 倉庫</button><button onclick="openPanel('bag')">🎒 背包</button><button onclick="openPanel('equipment')">⚔ 裝備</button><button onclick="openPanel('sect')">⛩ 宗門</button><button onclick="openPanel('quest')">📜 任務</button><button onclick="openPanel('market')">🏮 商店</button><button onclick="openPanel('save')">💾 存檔</button></div><div id="quest" class="panel"></div><div id="log" class="panel"></div><div id="prompt" class="panel"></div><div id="bar" class="panel"><button id="attack" class="highlight">左鍵 · 自動鎖敵</button><button id="skill1">1 · 技能</button><button id="skill2">2 · 技能</button><button id="skill3">3 · 技能</button><button id="skill4">4 · 技能</button><button id="dash">Space · 衝刺</button></div><div id="audioControl" class="panel"><button id="musicBtn">♫ 開啟仙境音樂</button><label>音樂 <input id="musicVolume" type="range" min="0" max="100" value="24"></label><label>音效 <input id="sfxVolume" type="range" min="0" max="100" value="40"></label></div><div id="settings" class="panel">WASD 移動｜360° 自動鎖敵｜滾輪縮放｜E 互動<br>Esc 關閉選單｜M 地圖資訊｜I 背包｜K 功法｜T 天賦｜B 倉庫</div></div>
+<div id="hud"><div id="stats" class="panel"><h1>✦ 太初仙域</h1><div id="status"></div><div id="meters"></div><div id="resources" class="note"></div></div><div id="zone" class="panel"><div id="zoneName"></div><div id="zoneInfo"></div></div><div id="menu" class="panel"><button class="highlight" onclick="openPanel('test')">🧪 測試模式</button><button onclick="openPanel('character')">☯ 角色</button><button onclick="openPanel('skills')">✦ 功法</button><button onclick="openPanel('talents')">🌟 天賦</button><button onclick="openPanel('warehouse')">🏛 倉庫</button><button onclick="openPanel('bag')">🎒 背包</button><button onclick="openPanel('equipment')">⚔ 裝備</button><button onclick="openPanel('sect')">⛩ 宗門</button><button onclick="openPanel('quest')">📜 任務</button><button onclick="openPanel('market')">🏮 商店</button><button onclick="window.toggleMount310()">🐎 召喚坐騎 (R)</button><button onclick="window.togglePet310()">🐾 寵物 (P)</button><button onclick="openPanel('save')">💾 存檔</button></div><div id="quest" class="panel"></div><div id="log" class="panel"></div><div id="prompt" class="panel"></div><div id="bar" class="panel"><button id="attack" class="highlight">左鍵 · 自動鎖敵</button><button id="skill1">1 · 技能</button><button id="skill2">2 · 技能</button><button id="skill3">3 · 技能</button><button id="skill4">4 · 技能</button><button id="dash">Space · 衝刺</button></div><div id="audioControl" class="panel"><button id="musicBtn">♫ 開啟仙境音樂</button><label>音樂 <input id="musicVolume" type="range" min="0" max="100" value="24"></label><label>音效 <input id="sfxVolume" type="range" min="0" max="100" value="40"></label></div><div id="settings" class="panel">WASD 移動｜360° 自動鎖敵｜滾輪縮放｜E 互動<br>Esc 關閉選單｜M 地圖資訊｜I 背包｜K 功法｜T 天賦｜B 倉庫</div></div>
 <div id="modal" hidden><div class="sheet"><div class="head"><h2 id="modalTitle"></h2><button onclick="closePanel()">✕ 關閉</button></div><div id="modalBody"></div></div></div><input id="import" hidden type="file" accept=".json,application/json"><div id="error"></div>
 <!-- 順序載入備用 Three.js 來源；其中一個 CDN 失效時嘗試下一個 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -32,6 +32,19 @@
   window.addEventListener('unhandledrejection',function(e){report('非同步錯誤：'+String(e.reason||'未知'));});
 })();
 </script>
+<script src="assets/city-art.js"></script>
+<script src="assets/city-v191.js"></script>
+<script src="assets/city-ground-v192.js"></script>
+<script src="assets/city-v193.js"></script>
+<script src="assets/city-v194.js"></script>
+<script src="assets/city-v195.js"></script>
+<script src="assets/city-v196.js"></script>
+<script src="assets/world-v197.js"></script>
+<script src="assets/world-v198.js"></script>
+<script src="assets/world-v199.js"></script>
+<script src="assets/world-v200.js"></script>
+<script src="assets/world-v201.js"></script>
+<script src="assets/world-v300.js"></script>
 <script>
 (()=>{'use strict';
 try {
@@ -74,17 +87,36 @@ function enhanceMaterial(id){return equipmentDefs[id]?.set==='fire'?'火靈礦':
 const zoneNames={city:'太初仙城 · 靈泉主城',forest:'青木林 · Lv.1–5 妖獸區',valley:'靈霧山谷 · Lv.5–10',dungeon:'靈霧秘境 · 太初遺跡',firelands:'赤焰荒原 · Lv.8–12',snowlands:'玄冰雪域 · Lv.12–16',skylands:'九霄仙境 · Lv.16–20'};
 const zoneLevel={city:1,forest:1,valley:5,dungeon:7,firelands:8,snowlands:12,skylands:16};
 const safeSpawns={city:[{x:0,z:-26},{x:-8,z:-21},{x:8,z:-21},{x:0,z:-32}],forest:[{x:0,z:39},{x:9,z:34},{x:-9,z:34},{x:15,z:28},{x:-15,z:28}],valley:[{x:0,z:39},{x:5,z:34},{x:-5,z:34}],dungeon:[{x:0,z:35},{x:5,z:31},{x:-5,z:31}],firelands:[{x:0,z:38},{x:5,z:34}],snowlands:[{x:0,z:38},{x:5,z:34}],skylands:[{x:0,z:38},{x:5,z:34}]};
-function fresh(){return {version:1,name:'無名修士',profession:'劍修',sect:'青雲劍宗',level:1,exp:0,realm:0,cultivation:0,hp:110,mp:43,stones:50,herbs:3,potions:3,materials:{},warehouse:{items:[],materials:{}},talents:{power:0,guard:0,vital:0,spirit:0,fortune:0},inventory:[],gear:{weapon:null,armor:null,accessory:null},skills:[...skillStarts['劍修']],equipped:[...skillStarts['劍修']],mastery:{},skillCd:{},contribution:0,sectRank:'外門弟子',quest:{kills:0,herbs:0,boss:0,claimed:[]},zone:'city',position:{x:0,z:-26},visited:false,valley:{chests:[],herbs:[],puzzles:[false,false,false],firstClear:false,fieldBossKills:0,dungeonKills:0},stats:{kills:0}}}
+function fresh(){return {version:1,name:'無名修士',profession:'劍修',sect:'青雲劍宗',level:1,exp:0,realm:0,cultivation:0,hp:110,mp:43,stones:50,herbs:3,potions:3,materials:{},warehouse:{items:[],materials:{}},talents:{power:0,guard:0,vital:0,spirit:0,fortune:0},inventory:[],gear:{weapon:null,armor:null,accessory:null},skills:[...skillStarts['劍修']],equipped:[...skillStarts['劍修']],mastery:{},skillCd:{},contribution:0,sectRank:'外門弟子',practiceLevel:1,practiceExp:0,sectMerit:0,sectMissions:{},quest:{kills:0,herbs:0,boss:0,claimed:[]},zone:'city',position:{x:0,z:-26},visited:false,valley:{chests:[],herbs:[],puzzles:[false,false,false],firstClear:false,fieldBossKills:0,dungeonKills:0},stats:{kills:0},mount310:{owned:true,active:false},pet310:{owned:false,active:false}}}
 let state=fresh();try{const a=JSON.parse(localStorage.getItem(SAVE)||'null');if(a&&a.version===1&&a.level>=1&&Array.isArray(a.skills)){state={...fresh(),...a,skillCd:{},materials:a.materials||{},quest:{...fresh().quest,...a.quest},stats:{...fresh().stats,...a.stats},valley:{...fresh().valley,...(a.valley||{})}}}}catch(e){}
 const talentDefs={power:{name:'劍心',desc:'每級攻擊 +3'},guard:{name:'玄甲',desc:'每級防禦 +3'},vital:{name:'長生',desc:'每級生命 +22'},spirit:{name:'凝神',desc:'每級靈力 +12'},fortune:{name:'機緣',desc:'每級額外獲得 3% 靈石（擊殺怪物）'}};
 function talentRank(k){return Math.max(0,Math.min(5,Number(state?.talents?.[k])||0))}
 function talentSpent(){return Object.keys(talentDefs).reduce((n,k)=>n+talentRank(k),0)}
 function talentFree(){return Math.max(0,state.level-1-talentSpent())}
 function ensureV18(){if(!state.talents||typeof state.talents!=='object')state.talents={};for(const k of Object.keys(talentDefs))state.talents[k]=talentRank(k);if(!state.warehouse||typeof state.warehouse!=='object')state.warehouse={items:[],materials:{}};if(!Array.isArray(state.warehouse.items))state.warehouse.items=[];if(!state.warehouse.materials||typeof state.warehouse.materials!=='object')state.warehouse.materials={};state.warehouse.items=state.warehouse.items.map(itemOf).filter(Boolean).slice(0,40)}
-function maxHp(){return 100+state.level*10+state.realm*20+(state.profession==='體修'?25:0)+equipBonus('hp')+talentRank('vital')*22}function maxMp(){return 40+state.level*3+state.realm*9+(state.profession==='丹修'||state.profession==='符修'?12:0)+equipBonus('mp')+talentRank('spirit')*12}function atk(){return 8+state.level*2+state.realm*3+(state.profession==='劍修'?4:0)+equipBonus('atk')+talentRank('power')*3}function def(){return 4+state.level+state.realm*2+(state.profession==='體修'?4:0)+equipBonus('def')+talentRank('guard')*3}const realmNames=['煉氣一層','煉氣二層','煉氣三層','煉氣四層','煉氣五層','築基初期','築基中期','築基後期','金丹初期'];const needCult=[100,180,280,420,650,900,1300,1850,2600];function expNeed(){return Math.round(70+40*(state.level-1)+10*(state.level-1)**1.5)}
+function maxHp(){return 100+state.level*10+state.realm*20+(state.profession==='體修'?25:0)+equipBonus('hp')+talentRank('vital')*22}function maxMp(){return 40+state.level*3+state.realm*9+(state.profession==='丹修'||state.profession==='符修'?12:0)+equipBonus('mp')+talentRank('spirit')*12}function atk(){return 8+state.level*2+state.realm*3+(state.profession==='劍修'?4:0)+equipBonus('atk')+talentRank('power')*3}function def(){return 4+state.level+state.realm*2+(state.profession==='體修'?4:0)+equipBonus('def')+talentRank('guard')*3}const realmNames=['煉氣一層','煉氣二層','煉氣三層','煉氣四層','煉氣五層','築基初期','築基中期','築基後期','金丹初期','金丹中期','金丹後期',...['元嬰','化神','煉虛','合體','大乘','渡劫','真仙','玄仙','金仙','太乙金仙','大羅金仙','混元大羅金仙','仙帝'].flatMap(n=>['初期','中期','後期','圓滿'].map(s=>n+s)),'太初道祖'];
+const needCult=realmNames.map((_,i)=>i<9?[100,180,280,420,650,900,1300,1850,2600][i]:Math.round(2600*Math.pow(1.24,i-8)));
+const practiceNeed=lv=>Math.round(65+lv*28+Math.pow(lv,1.38)*6);
+function realmName(){return realmNames[Math.max(0,Math.min(realmNames.length-1,state.realm))]}
+function sectStyle(){return Object.entries(sects).find(([,names])=>names.includes(state.sect))?.[0]||state.profession}
+function sectCultBonus(){return sectStyle()==='丹修'?.18:sectStyle()==='符修'?.12:sectStyle()==='劍修'?.1:.08}
+function sectRanks(){return [{name:'外門弟子',merit:0,level:1},{name:'內門弟子',merit:100,level:5},{name:'核心弟子',merit:350,level:12},{name:'親傳弟子',merit:850,level:22},{name:'宗門長老',merit:1800,level:35},{name:'太上長老',merit:4000,level:55},{name:'護宗仙尊',merit:8500,level:80}]}
+function sectRankBonus(){return Math.max(0,sectRanks().findIndex(r=>r.name===state.sectRank))}
+function practiceGain(amount){state.practiceExp=(state.practiceExp||0)+amount;let ups=0;while(state.practiceLevel<100&&state.practiceExp>=practiceNeed(state.practiceLevel)){state.practiceExp-=practiceNeed(state.practiceLevel);state.practiceLevel++;ups++}if(state.practiceLevel>=100)state.practiceExp=0;if(ups)log('修煉等級提升至 修行 Lv.'+state.practiceLevel+'！');}
+function ensureV410(){state.practiceLevel=Math.max(1,Math.min(100,Number(state.practiceLevel)||1));state.practiceExp=Math.max(0,Number(state.practiceExp)||0);state.sectMerit=Math.max(0,Number(state.sectMerit)||0);if(!state.sectMissions||typeof state.sectMissions!=='object')state.sectMissions={};if(!sectRanks().some(r=>r.name===state.sectRank))state.sectRank='外門弟子';state.realm=Math.max(0,Math.min(realmNames.length-1,Number(state.realm)||0))}
+// V4.3 宗門秘境試煉：進度隨存檔保存，難度僅在秘境生效。
+const V430_TIERS=[{name:'入門試煉',level:7,realm:0,kills:4,boss:1,mult:1,stones:120,merit:65},{name:'精英試煉',level:20,realm:5,kills:7,boss:1,mult:1.6,stones:360,merit:170},{name:'真傳試煉',level:40,realm:12,kills:10,boss:2,mult:2.4,stones:850,merit:380},{name:'仙門試煉',level:65,realm:24,kills:14,boss:3,mult:3.5,stones:1700,merit:760}];
+function ensureV430(){if(!state.trial430||typeof state.trial430!=='object')state.trial430={tier:0,kills:0,boss:0,claimed:[],started:false};const t=state.trial430;t.tier=Math.max(0,Math.min(3,Number(t.tier)||0));t.kills=Math.max(0,Number(t.kills)||0);t.boss=Math.max(0,Number(t.boss)||0);if(!Array.isArray(t.claimed))t.claimed=[];t.started=!!t.started;}
+function v430TrialPanel(){ensureV430();const t=state.trial430,req=V430_TIERS[t.tier];const ready=state.level>=req.level&&state.realm>=req.realm;return `<h3>⚔️ 宗門秘境試煉</h3><p>目前難度：<b>${req.name}</b>｜建議人物 Lv.${req.level}、境界 ${realmNames[req.realm]}</p><p>進度：秘境妖獸 ${Math.min(t.kills,req.kills)}/${req.kills}、秘境首領 ${Math.min(t.boss,req.boss)}/${req.boss}｜敵人強度 ×${req.mult}</p><p>獎勵：${req.stones} 靈石、${req.merit} 宗門功勳及貢獻（每階首次領取）</p><div class="rows">${V430_TIERS.map((v,i)=>`<div class="item"><div><b>${v.name}</b><small>Lv.${v.level} / ${realmNames[v.realm]} / 強度 ×${v.mult}${t.claimed.includes(i)?'｜已通關':''}</small></div><button ${state.level<v.level||state.realm<v.realm?'disabled':''} onclick="window.v430Choose(${i})">選擇</button></div>`).join('')}</div><div class="rows"><button ${!ready||t.started?'disabled':''} onclick="window.v430Start()">${t.started?'試煉進行中':'開始試煉'}</button><button ${!t.started||t.kills<req.kills||t.boss<req.boss||t.claimed.includes(t.tier)?'disabled':''} onclick="window.v430Claim()">領取試煉獎勵</button><button ${!t.started?'disabled':''} onclick="window.v430Stop()">放棄試煉</button></div><p class="note">開始後前往「靈霧秘境」擊敗妖獸及首領。切換難度會清空本輪進度，但不影響已領取的獎勵。</p>`;}
+window.v430Choose=i=>{ensureV430();const req=V430_TIERS[i];if(!req||state.level<req.level||state.realm<req.realm)return;state.trial430.tier=i;state.trial430.kills=0;state.trial430.boss=0;state.trial430.started=false;save();openPanel('sect')};
+window.v430Start=()=>{ensureV430();const t=state.trial430,req=V430_TIERS[t.tier];if(state.level<req.level||state.realm<req.realm)return;t.kills=0;t.boss=0;t.started=true;save();log('宗門試煉開始：'+req.name+'！請前往靈霧秘境。');openPanel('sect')};
+window.v430Stop=()=>{ensureV430();state.trial430.started=false;state.trial430.kills=0;state.trial430.boss=0;save();openPanel('sect')};
+window.v430Claim=()=>{ensureV430();const t=state.trial430,r=V430_TIERS[t.tier];if(!t.started||t.claimed.includes(t.tier)||t.kills<r.kills||t.boss<r.boss)return;t.claimed.push(t.tier);t.started=false;state.stones+=r.stones;state.contribution+=r.merit;state.sectMerit+=r.merit;state.cultivation+=Math.round(r.merit*1.5);practiceGain(r.merit);log('通過'+r.name+'！宗門功勳 +'+r.merit+'、靈石 +'+r.stones);save();refresh();openPanel('sect')};
+function v430ScaleDungeonEnemies(){if(activeZone!=='dungeon')return;ensureV430();const t=state.trial430,scale=t.started?V430_TIERS[t.tier].mult:1;for(const e of enemies){if(!e.active||!e.mesh||e.mesh.userData.v430Scaled)continue;e.mesh.userData.v430Scaled=true;if(scale<=1)continue;e.hp=Math.ceil(e.hp*scale);e.hpNow=Math.ceil(e.hpNow*scale);e.atk=Math.ceil(e.atk*(1+(scale-1)*.55));e.mesh.scale.multiplyScalar(1+Math.min(.24,(scale-1)*.08));if(e.label){const small=e.label.querySelector('small');if(small)small.textContent='HP '+Math.ceil(e.hpNow)+'/'+e.hp}}}
+function expNeed(){return Math.round(70+40*(state.level-1)+10*(state.level-1)**1.5)}
 function log(s){const el=document.createElement('div');el.textContent='['+new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'})+'] '+s;$('log').prepend(el);while($('log').children.length>25)$('log').lastChild.remove()}
-ensureEquipment();ensureV18();function save(silent=true){try{localStorage.setItem(SAVE,JSON.stringify({...state,skillCd:{}}));if(!silent)log('存檔成功。')}catch(e){if(!silent)alert('本機儲存失敗，請使用匯出備份。')}}
-function earnExp(n){state.exp+=n;while(state.level<20&&state.exp>=expNeed()){state.exp-=expNeed();state.level++;state.hp=maxHp();state.mp=maxMp();log(`人物等級提升至 Lv.${state.level}！`)}if(state.level>=20)state.exp=Math.min(state.exp,expNeed())}
+ensureEquipment();ensureV18();ensureV410();ensureV430();function save(silent=true){try{localStorage.setItem(SAVE,JSON.stringify({...state,skillCd:{}}));if(!silent)log('存檔成功。')}catch(e){if(!silent)alert('本機儲存失敗，請使用匯出備份。')}}
+function earnExp(n){state.exp+=n;while(state.level<100&&state.exp>=expNeed()){state.exp-=expNeed();state.level++;state.hp=maxHp();state.mp=maxMp();log(`人物等級提升至 Lv.${state.level}！`)}if(state.level>=100)state.exp=0}
 function unlock(k){if(!state.skills.includes(k))state.skills.push(k)}
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x789d9b);scene.fog=new THREE.Fog(0x789d9b,42,115);const camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,240);const renderer=new THREE.WebGLRenderer({canvas:$('world'),antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;scene.add(new THREE.HemisphereLight(0xd7f9e7,0x304d38,1.05));const sunlight=new THREE.DirectionalLight(0xffeab9,1.2);sunlight.position.set(-18,32,20);sunlight.castShadow=true;sunlight.shadow.mapSize.set(1024,1024);Object.assign(sunlight.shadow.camera,{left:-42,right:42,top:42,bottom:-42});scene.add(sunlight);
 const mat=(c)=>new THREE.MeshLambertMaterial({color:c,flatShading:true});const gr=(geo,m,x=0,y=0,z=0)=>{const o=new THREE.Mesh(geo,m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;return o};const box=(w,h,d,c,x,y,z)=>gr(new THREE.BoxGeometry(w,h,d),mat(c),x,y,z);const ball=(r,c,x,y,z,seg=9)=>gr(new THREE.SphereGeometry(r,seg,7),mat(c),x,y,z);const cylinder=(r1,r2,h,c,x,y,z)=>gr(new THREE.CylinderGeometry(r1,r2,h,8),mat(c),x,y,z);
@@ -93,7 +125,7 @@ function labelFor(name,x,z,height=3.2,kind='npc',sub='靠近按 E 互動') {cons
 function updateLabels(){const tmp=new THREE.Vector3();for(const a of labelRecords){if(a.follow){a.x=a.follow.position.x;a.z=a.follow.position.z;if(a.followDead?.()){a.el.classList.add('hidden');continue}}const distance=Math.hypot(player.position.x-a.x,player.position.z-a.z);tmp.set(a.x,a.height,a.z).project(camera);const visible=tmp.z>-1&&tmp.z<1&&distance<41&&Math.abs(tmp.x)<1.15&&Math.abs(tmp.y)<1.15;a.el.classList.toggle('hidden',!visible);if(!visible)continue;a.el.style.left=(tmp.x*.5+.5)*innerWidth+'px';a.el.style.top=(-tmp.y*.5+.5)*innerHeight+'px';a.el.style.opacity=String(Math.max(.65,Math.min(1,1.3-distance/100)))}}
 let obstacles=[],interactables=[],enemies=[],drops=[],decor=[];let hazards=[];const valleyMonsters=[{name:'晶甲靈龜',level:5,hp:180,atk:16,exp:35,stones:[10,17],respawn:25},{name:'雲尾靈狐',level:6,hp:145,atk:20,exp:42,stones:[12,20],respawn:22},{name:'青藤靈妖',level:7,hp:220,atk:23,exp:52,stones:[16,24],respawn:30},{name:'玄晶靈',level:8,hp:260,atk:28,exp:65,stones:[20,30],respawn:35},{name:'玄霧靈鹿',level:10,hp:1200,atk:38,exp:250,stones:[70,100],respawn:180},{name:'太初石靈',level:10,hp:1500,atk:42,exp:300,stones:[80,120],respawn:999999}];function add(o){world.add(o);return o}function obstacle(x,z,r){obstacles.push({x,z,r})}function isFree(x,z,r=.48){const limit=(activeZone==='valley'||expansionData[activeZone])?53:45;if(Math.abs(x)>limit-r||Math.abs(z)>limit-r)return false;return !obstacles.some(o=>Math.hypot(x-o.x,z-o.z)<r+o.r)}function safeMove(o,dx,dz){if(isFree(o.position.x+dx,o.position.z,.46))o.position.x+=dx;if(isFree(o.position.x,o.position.z+dz,.46))o.position.z+=dz}
 function tree(x,z,s=1){const g=new THREE.Group();g.position.set(x,0,z);g.add(cylinder(.16*s,.22*s,2.25*s,0x76563e,0,1.02*s,0));g.add(ball(.95*s,0x65a85f,0,2.7*s,0));g.add(ball(.72*s,0x8fd076,-.62*s,2.35*s,.2*s));g.add(ball(.68*s,0x79bc69,.58*s,2.42*s,-.18*s));g.add(ball(.52*s,0xa3de84,.05*s,3.18*s,.1*s));add(g);obstacle(x,z,.88*s)}function rock(x,z,r=1){const o=gr(new THREE.DodecahedronGeometry(r,0),mat(0x87948a),x,.45*r,z);o.scale.y=.65;add(o);obstacle(x,z,r*.7)}
-function house(x,z,name,color,action){const g=new THREE.Group();g.position.set(x,0,z);g.add(box(7.1,3.75,5.6,0xe7e3da,0,1.95,0));g.add(box(7.5,.28,5.9,0x728b81,0,.14,0));g.add(box(6.7,1.9,.24,0x57463c,0,3.05,2.93));g.add(box(2.2,2.75,.18,0x654a38,0,1.38,2.9));
+function house(x,z,name,color,action){if(window.TaichuArt){const model=TaichuArt.createBuilding(name);model.position.set(x,0,z);add(model);obstacle(x,z,name==='宗門大殿'?5.2:4.0);addInteract(name,x,z+5.6,action,'🏮');labelFor(name,x,z+2.8,name==='宗門大殿'?11:8,'building','E · 進入／互動');return;} const g=new THREE.Group();g.position.set(x,0,z);g.add(box(7.1,3.75,5.6,0xe7e3da,0,1.95,0));g.add(box(7.5,.28,5.9,0x728b81,0,.14,0));g.add(box(6.7,1.9,.24,0x57463c,0,3.05,2.93));g.add(box(2.2,2.75,.18,0x654a38,0,1.38,2.9));
 for(const d of [-1,1]){g.add(box(.26,3.45,.24,0x55433a,d*2.7,1.78,2.92));g.add(box(.26,3.45,.24,0x55433a,d*1.05,1.78,2.92));g.add(box(2.12,.2,.2,0x55433a,d*1.87,2.55,2.98));g.add(box(1.12,1.1,.18,0xd2ecff,d*2.18,2.1,2.99));g.add(box(1.12,1.1,.18,0xd2ecff,d*2.18,2.1,-3.01));g.add(ball(.3,0xffcf8d,d*3.55,2.72,3.04));g.add(cylinder(.08,.08,.55,0xc69759,d*3.55,2.43,3.04));}
 const roof1=gr(new THREE.ConeGeometry(5.95,2.45,4),mat(color),0,5.15,0);roof1.rotation.y=Math.PI/4;g.add(roof1);const roof2=gr(new THREE.ConeGeometry(3.05,1.5,4),mat(0x8f4047),0,6.0,0.45);roof2.rotation.y=Math.PI/4;g.add(roof2);const dormer=gr(new THREE.BoxGeometry(1.2,1.35,1.2),mat(0xefe8df),0,5.2,2.15);g.add(dormer);const dormRoof=gr(new THREE.ConeGeometry(1.08,.72,4),mat(0x7f3945),0,6.07,2.15);dormRoof.rotation.y=Math.PI/4;g.add(dormRoof);
 for(const d of [-1,1]){const shrub=ball(.55,0x7bbe67,d*2.9,.52,3.65);g.add(shrub);g.add(ball(.38,0x90d57d,d*2.55,.72,3.35));}
@@ -139,12 +171,12 @@ function makeSky(zone){
 let skyClouds=[];
 function animateSky(dt){for(const c of skyClouds){c.group.position.x+=dt*c.speed;if(c.group.position.x>100)c.group.position.x=-100;}}
 function updateStarField(dt){for(const star of ambientStars){const a=star.dots.geometry.attributes.position;for(let i=0;i<star.data.length;i++){const p=star.data[i];p.y+=dt*p.speed;if(p.y>9.4)p.y=.65;a.array[3*i+1]=p.y;}a.needsUpdate=true;star.dots.material.opacity=.62+.2*Math.sin(nowT*.9)}}
-function buildCity(){makeSky('city');scene.background.set(0x91cce9);scene.fog.color.set(0xb5d9e9);baseGround(0x93c18a);
+function buildCity(){if(window.TaichuCity191)TaichuCity191.clear();makeSky('city');scene.background.set(0x91cce9);scene.fog.color.set(0xb5d9e9);baseGround(0x718f72);
 // 對稱石磚大道、主廣場與環形步道
-add(gr(new THREE.PlaneGeometry(14,84),mat(0xdfd0ba),0,.024,0).rotateX(-Math.PI/2));
-add(gr(new THREE.CylinderGeometry(12.4,12.4,.11,48),mat(0xe7e2d6),0,.11,8));
-add(gr(new THREE.CylinderGeometry(10.6,10.6,.12,48),mat(0xd1d6cf),0,.17,8));
-add(gr(new THREE.RingGeometry(6.8,9.8,48),mat(0xf2e5c7),0,.244,8).rotateX(-Math.PI/2));
+add(gr(new THREE.PlaneGeometry(14,84),mat(0xa7a493),0,.024,0).rotateX(-Math.PI/2));
+add(gr(new THREE.CylinderGeometry(12.4,12.4,.11,48),mat(0xb0b3a7),0,.11,8));
+add(gr(new THREE.CylinderGeometry(10.6,10.6,.12,48),mat(0x949f95),0,.17,8));
+add(gr(new THREE.RingGeometry(6.8,9.8,48),mat(0xc4b69a),0,.244,8).rotateX(-Math.PI/2));
 for(let j=0;j<24;j++){const a=j*Math.PI/12;add(box(.62,.08,1.05,j%2?0xc3bdad:0xe1dacc,Math.cos(a)*10.1,.246,8+Math.sin(a)*10.1))}
 // 靈泉：多層水池＋浮空晶石＋光環
 const fountain=new THREE.Group();fountain.position.set(0,0,8);
@@ -180,6 +212,13 @@ for(const d of [-1,1]){add(box(1.6,6,1.6,0xe2dbc5,d*6,3,-35));add(box(1.6,.48,1.
 add(box(15,1.2,2.4,0x617f86,0,6.15,-35));add(box(17,.45,3.2,0x8d5667,0,7.15,-35));
 for(let x=-45;x<=45;x+=6){add(box(4,3,1.8,0x83958b,x,1.5,-44));add(box(4,3,1.8,0x83958b,x,1.5,44))}
 for(let z=-42;z<=42;z+=6){add(box(1.8,3,4,0x83958b,-44,1.5,z));add(box(1.8,3,4,0x83958b,44,1.5,z))}
+if(window.TaichuArt)TaichuArt.decorate(add,obstacle);
+if(window.TaichuCity191)TaichuCity191.install(add);
+if(window.TaichuGround192)TaichuGround192.install(add);
+if(window.TaichuCity193)TaichuCity193.install(add);
+if(window.TaichuCity194)TaichuCity194.install(add);
+if(window.TaichuCity195)TaichuCity195.install(add);
+if(window.TaichuCity196)TaichuCity196.install(add);
 addStarField('city');log('來到星輝太初仙城。仙燈、聚靈泉與靈塵在城中閃耀。')}
 const regions=[{x:-18,z:25,type:0,r:12,count:5},{x:19,z:18,type:1,r:12,count:4},{x:-23,z:-3,type:2,r:12,count:3},{x:23,z:-17,type:3,r:11,count:2},{x:-17,z:-33,type:4,r:6,count:1}];function spawnEnemy(region){const t=monsters[region.type];let x,z;for(let a=0;a<35;a++){const theta=Math.random()*Math.PI*2,r=Math.random()*region.r;x=region.x+Math.cos(theta)*r;z=region.z+Math.sin(theta)*r;if(isFree(x,z,1)&&Math.abs(x)>6&&Math.hypot(x-player.position.x,z-player.position.z)>7)break}if(!isFree(x,z,1)||Math.abs(x)<6)return;const mesh=new THREE.Group();mesh.position.set(x,0,z);
   if(region.type===0){mesh.add(ball(.6,0x7ee09a,0,.52,0,18));mesh.add(ball(.54,0x63cf86,0,.72,0,18));mesh.add(ball(.08,0x151515,-.15,.88,.36,10));mesh.add(ball(.08,0x151515,.15,.88,.36,10));mesh.add(ball(.06,0xeaf8ff,-.12,.92,.43));mesh.add(ball(.06,0xeaf8ff,.18,.92,.43));}
@@ -193,7 +232,7 @@ const regions=[{x:-18,z:25,type:0,r:12,count:5},{x:19,z:18,type:1,r:12,count:4},
   if(region.type===2){const tail=gr(new THREE.ConeGeometry(.2,.8,6),mat(0xb6c8d0),0,.73,-.7);tail.rotation.x=-.75;mesh.add(tail);}
   if(region.type===3){mesh.add(gr(new THREE.OctahedronGeometry(.26,0),new THREE.MeshStandardMaterial({color:0x7be9ef,emissive:0x4fc9da,emissiveIntensity:.6}),0,.78,.39));}
   if(region.type===4){const halo=gr(new THREE.TorusGeometry(.95,.09,8,28),mat(0xb7f5bd),0,2.35,0);halo.rotation.x=.4;mesh.add(halo);}
-  add(mesh);const obj={...t,mesh,region,home:{x,z},hpNow:t.hp,attackCd:0,slowed:0,active:true,phase:Math.random()*6};enemies.push(obj);const h=region.type===4?4.2:region.type===3?2.7:2.25;const tag=labelFor('Lv.'+t.level+' '+t.name,x,z,h,'monster','HP '+t.hp+'/'+t.hp);obj.label=tag;const rec=labelRecords[labelRecords.length-1];rec.follow=mesh;rec.followDead=()=>!obj.active;obj.labelRecord=rec}
+  if(region.type===4){for(let k=0;k<6;k++){const a=k*Math.PI/3;const shard=new THREE.Mesh(new THREE.ConeGeometry(.17,.72,5),new THREE.MeshStandardMaterial({color:0x88e5ac,emissive:0x226b42,emissiveIntensity:.4}));shard.position.set(Math.cos(a)*1.05,2.15+Math.sin(a*2)*.15,Math.sin(a)*1.05);mesh.add(shard)}}add(mesh);const obj={...t,mesh,region,home:{x,z},hpNow:t.hp,attackCd:0,slowed:0,active:true,phase:Math.random()*6};enemies.push(obj);const h=region.type===4?4.2:region.type===3?2.7:2.25;const tag=labelFor('Lv.'+t.level+' '+t.name,x,z,h,'monster','HP '+t.hp+'/'+t.hp);obj.label=tag;const rec=labelRecords[labelRecords.length-1];rec.follow=mesh;rec.followDead=()=>!obj.active;obj.labelRecord=rec}
 function buildForest(){makeSky('forest');scene.background.set(0x729f90);scene.fog.color.set(0x5a8a7a);baseGround(0x528660);for(let i=0;i<130;i++){const x=Math.random()*86-43,z=Math.random()*86-43;if(Math.abs(x)<7)continue;const flower=ball(.075,i%3===0?0xf2d6e9:i%3===1?0xf8db96:0xb9dfeb,x,.11,z);add(flower)}for(let i=0;i<105;i++){const x=Math.random()*86-43,z=Math.random()*86-43;if(Math.abs(x)<5||Math.hypot(x,z-39)<9)continue;tree(x,z,.6+Math.random()*.65)}for(let i=0;i<25;i++){const x=Math.random()*86-43,z=Math.random()*86-43;if(Math.abs(x)<6)continue;rock(x,z,.5+Math.random()*.55)}addInteract('返回太初仙城',0,39,()=>changeZone('city'),'🌀');addInteract('前往靈霧山谷',8,-39,()=>{if(state.level<5){log('進入靈霧山谷需要人物 Lv.5。');return}changeZone('valley')},'🌀');for(let i=0;i<9;i++){const x=Math.random()*76-38,z=Math.random()*76-38;if(!isFree(x,z,1))continue;const herb=ball(.42,0x8ceeaf,x,.45,z);add(herb);interactables.push({x,z,name:'採集凝露靈草',fn:()=>{state.herbs++;state.quest.herbs++;log('採集凝露靈草 +1。');world.remove(herb);for(const a of labelRecords)if(a.kind==='herb'&&a.x===x&&a.z===z)a.el.remove();interactables=interactables.filter(t=>t.pole!==herb);save();refresh()},pole:herb});labelFor('凝露靈草',x,z,1.45,'herb','E · 採集')}addInteract('古碑 · 太初殘印',-36,-35,()=>{if(!state.visited){state.visited=true;unlock('root');state.cultivation+=35;log('你在古碑中領悟一絲道意，獲得「束縛符」與 35 修為。')}else log('古碑仍泛著微弱的太初靈光。');save();refresh()},'✦');for(const r of regions)for(let i=0;i<r.count;i++)spawnEnemy(r);addStarField('forest');log('已進入青木林。由入口向深處探索，妖獸等級將逐漸提高。')}
 
 // V1.6 靈霧秘境：獨立地圖、探索、妖獸、機關與 Boss
@@ -242,7 +281,7 @@ function buildValley(){makeSky('valley');scene.background.set(0xb2d7d0);scene.fo
 function dungeonPuzzle(i,x,z){const names=['青木機關','玄晶機關','星輝機關'];const p=sparklePillar(x,z,state.valley.puzzles[i]?0xf3d67b:0x84cbdc);interactables.push({x,z,pole:p,name:names[i],fn:()=>{if(state.valley.puzzles[i])return log(names[i]+'已經啟動。');if(i===0){state.valley.puzzles[i]=true;log('找到祭壇旁的靈力晶石，青木機關啟動！')}else if(i===1){if(enemies.some(e=>e.active&&e.region.guardian===true))return log('必須先擊敗兩隻玄晶守衛。');state.valley.puzzles[i]=true;log('守護妖獸已被擊敗，玄晶機關啟動！')}else {if(!state.valley.puzzles[0]||!state.valley.puzzles[1])return log('依照青木 → 玄晶 → 星輝的順序啟動機關。');state.valley.puzzles[i]=true;log('星輝石柱共鳴，中央封印解除！')}save();refresh();p.children.forEach(c=>{if(c.material&&c.material.color)c.material.color.setHex(0xf3d67b)});if(state.valley.puzzles.every(Boolean))openDungeonBoss()}});labelFor(names[i],x,z,3.5,'npc','E · 啟動')}
 function openDungeonBoss(){if(activeZone!=='dungeon'||enemies.some(e=>e.boss))return;const r={x:0,z:-27,type:5,r:1,count:1};spawnValleyEnemy(r);log('太初石靈已甦醒！前往遺跡深處迎戰。')}
 function buildDungeon(){makeSky('dungeon');scene.background.set(0x8da8a9);scene.fog.color.set(0x90a7a2);baseGround(0x859f94);add(gr(new THREE.PlaneGeometry(17,80),mat(0xc8c7b5),0,.02,0).rotateX(-Math.PI/2));for(let i=0;i<12;i++){const x=i%2?12:-12,z=32-Math.floor(i/2)*12;sparklePillar(x,z,0x87e1dc);obstacle(x,z,.8)}addInteract('返回靈霧山谷',0,40,()=>changeZone('valley'),'🌀');dungeonPuzzle(0,-12,17);dungeonPuzzle(1,12,1);dungeonPuzzle(2,-12,-14);if(!state.valley.puzzles[1]){const r={x:13,z:6,type:3,guardian:true,r:4,count:2};for(let i=0;i<2;i++)spawnValleyEnemy(r)}if(state.valley.puzzles.every(Boolean))openDungeonBoss();addStarField('forest');log('進入靈霧秘境：啟動青木、玄晶、星輝三座機關。')}
-function enemyAttackPlayer(e,amount){if(invuln>0)return;invuln=.24;const damage=Math.max(3,Math.ceil(amount*1.35-def()*.58));state.hp=Math.max(0,state.hp-(shieldTime>0?Math.ceil(damage*.4):damage));particles(player.position.x,player.position.z,0xf3987c);if(state.hp<=0){const cost=Math.min(20,Math.floor(state.stones*.05));state.stones-=cost;state.hp=Math.ceil(maxHp()*.5);state.mp=Math.ceil(maxMp()*.5);if(activeZone==='dungeon'){log('秘境戰敗，返回秘境入口。機關進度保留。');changeZone('dungeon')}else{log('戰敗返回太初仙城，損失 '+cost+' 靈石。');changeZone('city')}}refresh()}
+function enemyAttackPlayer(e,amount){if(invuln>0)return;if(e?.mesh?.userData?.v360Rig)e.mesh.userData.v360Rig.userData.attackPulse=1;invuln=.24;const damage=Math.max(3,Math.ceil(amount*1.35-def()*.58));state.hp=Math.max(0,state.hp-(shieldTime>0?Math.ceil(damage*.4):damage));particles(player.position.x,player.position.z,0xf3987c);if(state.hp<=0){const cost=Math.min(20,Math.floor(state.stones*.05));state.stones-=cost;state.hp=Math.ceil(maxHp()*.5);state.mp=Math.ceil(maxMp()*.5);if(activeZone==='dungeon'){log('秘境戰敗，返回秘境入口。機關進度保留。');changeZone('dungeon')}else{log('戰敗返回太初仙城，損失 '+cost+' 靈石。');changeZone('city')}}refresh()}
 function updateValleyEnemies(dt){for(const e of [...enemies]){if(!e.active){if(nowT>e.respawnAt&&enemies.filter(a=>a.active&&a.region===e.region).length<e.region.count){e.respawnAt=Infinity;if(e.kind==='expansion')spawnExpansionEnemy(e.region);else spawnValleyEnemy(e.region);e.removePending=true}continue}const m=e.mesh;let d=Math.hypot(m.position.x-player.position.x,m.position.z-player.position.z);e.attackCd=Math.max(0,e.attackCd-dt);e.skillCd=Math.max(0,e.skillCd-dt);e.slowed=Math.max(0,e.slowed-dt);e.phase+=dt*2;m.position.y=Math.sin(e.phase)*.045;const homeD=Math.hypot(m.position.x-e.home.x,m.position.z-e.home.z);if(homeD>22){const vx=(e.home.x-m.position.x)/homeD,vz=(e.home.z-m.position.z)/homeD;m.position.x+=vx*dt*3;m.position.z+=vz*dt*3;e.hpNow=Math.min(e.hp,e.hpNow+dt*25);continue}if(d< (e.boss?18:14)&&d>2.1&&!e.slowed){const vx=(player.position.x-m.position.x)/d,vz=(player.position.z-m.position.z)/d;const sp=(e.boss?2.0:1.45+e.level*.16)*dt;const tx=m.position.x+vx*sp,tz=m.position.z+vz*sp;if(isFree(tx,tz,.65))m.position.set(tx,m.position.y,tz);m.rotation.y=Math.atan2(vx,vz)}if(d<2.7&&e.attackCd<=0){e.attackCd=e.boss?1.5:1.85;enemyAttackPlayer(e,e.atk);if(activeZone!=='valley'&&activeZone!=='dungeon'&&!expansionData[activeZone])break}if(e.skillCd<=0&&d<12&&(e.boss||e.region.type===3||e.region.type===2)){e.skillCd=e.boss?(e.hpNow<e.hp*.5?5:7):8;const targetX=player.position.x,targetZ=player.position.z;const radius=e.boss?3.4:2.1;const ring=gr(new THREE.RingGeometry(radius-.12,radius,32),new THREE.MeshBasicMaterial({color:0xff9d72,side:THREE.DoubleSide,transparent:true,opacity:.78}),targetX,.13,targetZ);ring.rotation.x=-Math.PI/2;add(ring);hazards.push({obj:ring,x:targetX,z:targetZ,r:radius,delay:e.boss?1.35:1.5,source:e,damage:e.atk+5})}}for(let i=hazards.length-1;i>=0;i--){const h=hazards[i];h.delay-=dt;if(h.delay<=0){if(h.source.active&&Math.hypot(player.position.x-h.x,player.position.z-h.z)<h.r)enemyAttackPlayer(h.source,h.damage);world.remove(h.obj);hazards.splice(i,1)}}}
 function getSafePosition(zone,preferred){const list=safeSpawns[zone]||[{x:0,z:0}];const tries=[];if(preferred)tries.push(preferred);for(const p of list)tries.push(p);for(const p of list){for(const dx of [0,2.2,-2.2,4.2,-4.2])for(const dz of [0,2.2,-2.2,4.2,-4.2])tries.push({x:p.x+dx,z:p.z+dz})}for(const p of tries){if(isFree(p.x,p.z,.55))return p}return list[0]}
 const player=new THREE.Group();scene.add(player);let playerWeapon=null,playerAura=null,playerArms=[];
@@ -271,26 +310,26 @@ function rebuildPlayerModel(){clearGroup(player);playerWeapon=null;playerAura=nu
   playerAura=gr(new THREE.TorusGeometry(.72,.04,8,28),new THREE.MeshBasicMaterial({color:0x9eeadd,transparent:true,opacity:.42}),0,.08,0);playerAura.rotation.x=Math.PI/2;player.add(playerAura);
 }
 rebuildPlayerModel();
-let activeZone=null,near=null,camYaw=0,camPitch=.54,camDist=13,dialog=null,last=performance.now(),nowT=0,invuln=0,attCd=0,dashCd=0,dashTime=0,speedBuff=0,shieldTime=0,attackSwing=0,refreshTimer=0,saveTimer=0;const keys={};function changeZone(z){activeZone=z;state.zone=z;clearWorld();if(z==='city')buildCity();else if(z==='forest')buildForest();else if(z==='valley')buildValley();else if(z==='dungeon')buildDungeon();else buildExpansion(z);state.position=getSafePosition(z,safeSpawns[z]?.[0]);player.position.set(state.position.x,0,state.position.z);closePanel();save();refresh()}
-function resumeSaved(){activeZone=zoneNames[state.zone]?state.zone:'city';if(activeZone==='valley'&&state.level<5)activeZone='forest';if(state.level<(zoneLevel[activeZone]||1))activeZone='city';const loc=state.position||safeSpawns[activeZone][0];clearWorld();player.position.set(500,0,500);if(activeZone==='city')buildCity();else if(activeZone==='forest')buildForest();else if(activeZone==='valley')buildValley();else if(activeZone==='dungeon')buildDungeon();else buildExpansion(activeZone);const safe=getSafePosition(activeZone,{x:Number(loc.x)||0,z:Number(loc.z)||0});player.position.set(safe.x,0,safe.z);state.position={x:safe.x,z:safe.z};state.hp=Math.max(1,Math.min(maxHp(),state.hp));state.mp=Math.max(0,Math.min(maxMp(),state.mp));refresh()}
+let activeZone=null,near=null,camYaw=0,camPitch=.54,camDist=13,dialog=null,last=performance.now(),nowT=0,invuln=0,attCd=0,dashCd=0,dashTime=0,speedBuff=0,shieldTime=0,attackSwing=0,refreshTimer=0,saveTimer=0;const keys={};function changeZone(z){activeZone=z;state.zone=z;clearWorld();if(z==='city')buildCity();else if(z==='forest')buildForest();else if(z==='valley')buildValley();else if(z==='dungeon')buildDungeon();else buildExpansion(z);decorateTerrain320(z);v330BuildGround(z);v350Landmarks(z);v380RegionalDetail(z);v390RegionArchitecture(z);if(window.TaichuWorld197)TaichuWorld197.decorate(z,world);if(window.TaichuWorld198)TaichuWorld198.activate(z,world);if(window.TaichuWorld199)TaichuWorld199.activate(z,world);if(window.TaichuWorld200)TaichuWorld200.activate(z,world);if(window.TaichuWorld201)TaichuWorld201.activate(z,world);if(window.TaichuWorld300)TaichuWorld300.activate(z,world);state.position=getSafePosition(z,safeSpawns[z]?.[0]);player.position.set(state.position.x,0,state.position.z);closePanel();save();refresh()}
+function resumeSaved(){activeZone=zoneNames[state.zone]?state.zone:'city';if(activeZone==='valley'&&state.level<5)activeZone='forest';if(state.level<(zoneLevel[activeZone]||1))activeZone='city';const loc=state.position||safeSpawns[activeZone][0];clearWorld();player.position.set(500,0,500);if(activeZone==='city')buildCity();else if(activeZone==='forest')buildForest();else if(activeZone==='valley')buildValley();else if(activeZone==='dungeon')buildDungeon();else buildExpansion(activeZone);decorateTerrain320(activeZone);v330BuildGround(activeZone);v350Landmarks(activeZone);v380RegionalDetail(activeZone);v390RegionArchitecture(activeZone);if(window.TaichuWorld197)TaichuWorld197.decorate(activeZone,world);if(window.TaichuWorld198)TaichuWorld198.activate(activeZone,world);if(window.TaichuWorld199)TaichuWorld199.activate(activeZone,world);if(window.TaichuWorld200)TaichuWorld200.activate(activeZone,world);if(window.TaichuWorld201)TaichuWorld201.activate(activeZone,world);if(window.TaichuWorld300)TaichuWorld300.activate(activeZone,world);const safe=getSafePosition(activeZone,{x:Number(loc.x)||0,z:Number(loc.z)||0});player.position.set(safe.x,0,safe.z);state.position={x:safe.x,z:safe.z};state.hp=Math.max(1,Math.min(maxHp(),state.hp));state.mp=Math.max(0,Math.min(maxMp(),state.mp));refresh()}
 function nearest(max=7){let choice=null,d=max;for(const e of enemies){if(!e.active)continue;const dist=player.position.distanceTo(e.mesh.position);if(dist<d){d=dist;choice=e}}return choice}
 function particles(x,z,color=0xb4f2d3){for(let i=0;i<9;i++){const p=ball(.06+Math.random()*.08,color,x,(.3+Math.random()*1.5),z);p.material=new THREE.MeshBasicMaterial({color,transparent:true,opacity:.9});scene.add(p);effects.push({p,life:.5+Math.random()*.5,vx:(Math.random()-.5)*5,vz:(Math.random()-.5)*5,vy:1+Math.random()*3})}}
-const effects=[];function hitEnemy(e,dmg){if(!e||!e.active)return;e.hpNow-=dmg;if(e.label)e.label.querySelector('small').textContent='HP '+Math.max(0,Math.ceil(e.hpNow))+'/'+e.hp;particles(e.mesh.position.x,e.mesh.position.z,0xffd48b);if(e.hpNow<=0){tone(390,.34);e.active=false;world.remove(e.mesh);if(e.label)e.label.remove();state.stats.kills++;state.quest.kills++;if(e.level===5&&e.kind!=='valley')state.quest.boss++;earnExp(e.exp);state.cultivation+=e.kind==='valley'?(e.boss?10:2):e.kind==='expansion'?(e.boss?35:6):e.level===5?10:1+Math.floor(Math.random()*3);const coins=Math.round((e.stones[0]+Math.floor(Math.random()*(e.stones[1]-e.stones[0]+1)))*(1+talentRank('fortune')*.03));addDrop(e.mesh.position.x,e.mesh.position.z,'靈石',coins);if(Math.random()<.32)addDrop(e.mesh.position.x+.6,e.mesh.position.z,'靈草',1);if(e.kind==='valley'){addDrop(e.mesh.position.x+.8,e.mesh.position.z,'靈霧晶砂',e.boss?3:1);if(e.region.type===4)state.valley.fieldBossKills++;if(e.region.type===5){state.valley.dungeonKills++;if(!state.valley.firstClear){state.valley.firstClear=true;state.stones+=300;state.cultivation+=150;state.materials['太初靈核']=(state.materials['太初靈核']||0)+3;unlock('stararray');log('秘境首次通關！靈石 +300、修為 +150、太初靈核 ×3，領悟星輝劍陣！')}}}if(e.kind==='expansion'){const cfg=expansionData[e.expansionZone];addDrop(e.mesh.position.x+.8,e.mesh.position.z,cfg.material,e.boss?8:2);const chance=e.boss?.75:.035;if(Math.random()<chance){const pool=e.boss?cfg.rewards:cfg.rewards.slice(0,2);addEquipment(pool[Math.floor(Math.random()*pool.length)])}if(e.boss)log('擊敗 '+e.name+'！獲得珍稀鍛造材料，並有機會取得套裝裝備。')}if(e.kind==='valley'&&e.boss&&Math.random()<.3)addEquipment('crystalSword');if(e.kind==='valley'&&e.region.type===5&&!state.inventory.some(v=>itemOf(v)?.id==='primordial')&&!Object.values(state.gear||{}).some(v=>itemOf(v)?.id==='primordial'))addEquipment('primordial');if(e.kind!=='valley'&&e.level===5){unlock('sword');addDrop(e.mesh.position.x-.7,e.mesh.position.z,'青木靈核',1)}log(`擊敗 ${e.name}，EXP +${e.exp}、修為增加。`);e.respawnAt=e.region?.guardian?Infinity:nowT+e.respawn;save()}refresh()}
+const effects=[];function hitEnemy(e,dmg){if(!e||!e.active)return;combatBurst310(e.mesh.position.x,e.mesh.position.z,e.boss?0xffb34a:0x9ff0de);if(e.mesh?.userData?.v360Rig)e.mesh.userData.v360Rig.userData.hitPulse=1;e.hpNow-=dmg;if(e.label)e.label.querySelector('small').textContent='HP '+Math.max(0,Math.ceil(e.hpNow))+'/'+e.hp;particles(e.mesh.position.x,e.mesh.position.z,0xffd48b);if(e.hpNow<=0){if(activeZone==='dungeon'){ensureV430();if(state.trial430.started){state.trial430.kills++;if(e.boss||e.region?.type===5)state.trial430.boss++;}}tone(390,.34);e.active=false;world.remove(e.mesh);if(e.label)e.label.remove();state.stats.kills++;state.quest.kills++;if(!state.pet310?.owned&&Math.random()<(e.boss?.025:.004)){state.pet310={owned:true,active:true};log('稀有掉落：獲得靈狐寵物！按 P 可召喚或收回。');}if(e.level===5&&e.kind!=='valley')state.quest.boss++;earnExp(e.exp);state.cultivation+=e.kind==='valley'?(e.boss?10:2):e.kind==='expansion'?(e.boss?35:6):e.level===5?10:1+Math.floor(Math.random()*3);const coins=Math.round((e.stones[0]+Math.floor(Math.random()*(e.stones[1]-e.stones[0]+1)))*(1+talentRank('fortune')*.03));addDrop(e.mesh.position.x,e.mesh.position.z,'靈石',coins);if(Math.random()<.32)addDrop(e.mesh.position.x+.6,e.mesh.position.z,'靈草',1);if(e.kind==='valley'){addDrop(e.mesh.position.x+.8,e.mesh.position.z,'靈霧晶砂',e.boss?3:1);if(e.region.type===4)state.valley.fieldBossKills++;if(e.region.type===5){state.valley.dungeonKills++;if(!state.valley.firstClear){state.valley.firstClear=true;state.stones+=300;state.cultivation+=150;state.materials['太初靈核']=(state.materials['太初靈核']||0)+3;unlock('stararray');log('秘境首次通關！靈石 +300、修為 +150、太初靈核 ×3，領悟星輝劍陣！')}}}if(e.kind==='expansion'){const cfg=expansionData[e.expansionZone];addDrop(e.mesh.position.x+.8,e.mesh.position.z,cfg.material,e.boss?8:2);const chance=e.boss?.75:.035;if(Math.random()<chance){const pool=e.boss?cfg.rewards:cfg.rewards.slice(0,2);addEquipment(pool[Math.floor(Math.random()*pool.length)])}if(e.boss)log('擊敗 '+e.name+'！獲得珍稀鍛造材料，並有機會取得套裝裝備。')}if(e.kind==='valley'&&e.boss&&Math.random()<.3)addEquipment('crystalSword');if(e.kind==='valley'&&e.region.type===5&&!state.inventory.some(v=>itemOf(v)?.id==='primordial')&&!Object.values(state.gear||{}).some(v=>itemOf(v)?.id==='primordial'))addEquipment('primordial');if(e.kind!=='valley'&&e.level===5){unlock('sword');addDrop(e.mesh.position.x-.7,e.mesh.position.z,'青木靈核',1)}log(`擊敗 ${e.name}，EXP +${e.exp}、修為增加。`);e.respawnAt=e.region?.guardian?Infinity:nowT+e.respawn;save()}refresh()}
 function addDrop(x,z,type,n){const obj=ball(.25,type==='靈石'?0xf4d67e:type==='靈草'?0x79ed9c:0x8ee7d1,x,.35,z);add(obj);drops.push({obj,x,z,type,n,expires:nowT+70});const tag=labelFor(type+' ×'+n,x,z,1.15,'herb','E · 拾取');const rec=labelRecords[labelRecords.length-1];rec.follow=obj;rec.followDead=()=>!obj.parent}
-function attack(){if(dialog||attCd>0||activeZone==='city')return;attCd=.62;attackSwing=.35;tone(740,.11);particles(player.position.x+Math.sin(player.rotation.y)*1.5,player.position.z+Math.cos(player.rotation.y)*1.5,0xe9ecb8);let e=nearest(state.profession==='符修'||state.profession==='丹修'?8:3.1);if(e)hitEnemy(e,Math.max(2,atk()+Math.floor(Math.random()*6)-Math.floor(e.level/2)))}
-function skill(slot){if(dialog||activeZone==='city')return;const k=state.equipped[slot],t=techs[k];if(!t||state.skillCd[k]>0||state.mp<t.mp)return;state.mp-=t.mp;state.skillCd[k]=t.cd;tone(t.type==='heal'?540:880,.25);let effective=false;if(t.type==='stararray'){const targets=enemies.filter(e=>e.active&&player.position.distanceTo(e.mesh.position)<t.range);for(const e of targets)hitEnemy(e,Math.round(atk()*t.power));effective=targets.length>0;particles(player.position.x,player.position.z,0xffe7a5)}else if(t.type==='shield'){shieldTime=5;effective=true;particles(player.position.x,player.position.z,0x8bd6ff)}else if(t.type==='wind'){speedBuff=5;effective=true;particles(player.position.x,player.position.z,0x81ffd6)}else if(t.type==='heal'){if(state.hp<maxHp()){state.hp=Math.min(maxHp(),state.hp+35+state.level*5);effective=true;particles(player.position.x,player.position.z,0x9affad)}}else{const e=nearest(t.range);if(e){hitEnemy(e,Math.round(atk()*t.power*(1+(state.mastery[k]||0)*.0003)));if(t.type==='root')e.slowed=3;effective=true}}if(effective){state.mastery[k]=(state.mastery[k]||0)+2;log(`施展 ${t.name}！`)}refresh()}
+function attack(){combatBurst310(player.position.x,player.position.z,0x9ceeff);if(dialog||attCd>0||activeZone==='city')return;attCd=.62;attackSwing=.35;tone(740,.11);particles(player.position.x+Math.sin(player.rotation.y)*1.5,player.position.z+Math.cos(player.rotation.y)*1.5,0xe9ecb8);let e=nearest(state.profession==='符修'||state.profession==='丹修'?8:3.1);if(e)hitEnemy(e,Math.max(2,atk()+Math.floor(Math.random()*6)-Math.floor(e.level/2)))}
+function skill(slot){combatBurst310(player.position.x,player.position.z,0xf8d48e);if(dialog||activeZone==='city')return;const k=state.equipped[slot],t=techs[k];if(!t||state.skillCd[k]>0||state.mp<t.mp)return;state.mp-=t.mp;state.skillCd[k]=t.cd;tone(t.type==='heal'?540:880,.25);let effective=false;if(t.type==='stararray'){const targets=enemies.filter(e=>e.active&&player.position.distanceTo(e.mesh.position)<t.range);for(const e of targets)hitEnemy(e,Math.round(atk()*t.power));effective=targets.length>0;particles(player.position.x,player.position.z,0xffe7a5)}else if(t.type==='shield'){shieldTime=5;effective=true;particles(player.position.x,player.position.z,0x8bd6ff)}else if(t.type==='wind'){speedBuff=5;effective=true;particles(player.position.x,player.position.z,0x81ffd6)}else if(t.type==='heal'){if(state.hp<maxHp()){state.hp=Math.min(maxHp(),state.hp+35+state.level*5);effective=true;particles(player.position.x,player.position.z,0x9affad)}}else{const e=nearest(t.range);if(e){hitEnemy(e,Math.round(atk()*t.power*(1+(state.mastery[k]||0)*.0003)));if(t.type==='root')e.slowed=3;effective=true}}if(effective){state.mastery[k]=(state.mastery[k]||0)+2;log(`施展 ${t.name}！`)}refresh()}
 function dash(){if(dashCd>0||dialog)return;dashTime=.23;dashCd=2.5;invuln=.32;tone(660,.12);particles(player.position.x,player.position.z,0xa1edfa)}
 function tryInteract(){if(dialog||!near)return;near.fn()}
-function cultivationCost(){return [4,6,9,13,18,27,38,55,80][Math.min(state.realm,8)]||80}
-function breakthroughStoneCost(){return [35,55,85,125,190,290,430,650,950][Math.min(state.realm,8)]||950}
-function cultivate(times=1){if(activeZone!=='city'){log('請回太初仙城修煉。');return}const cost=cultivationCost()*times;if(state.stones<cost){log(`靈石不足：閉關 ${times} 次需要 ${cost} 靈石，現有 ${state.stones}。`);return}state.stones-=cost;let gain=0;for(let i=0;i<times;i++)gain+=20+Math.floor(Math.random()*11);state.cultivation+=gain;state.mp=Math.min(maxMp(),state.mp+3*times);particles(player.position.x,player.position.z,0x9fe8ff);tone(480,.4);log(`閉關吐納 ${times} 次，消耗 ${cost} 靈石，修為 +${gain}。`);save();refresh()}
-function breakthrough(){const need=needCult[Math.min(state.realm,needCult.length-1)];if(state.realm>=realmNames.length-1){log('目前版本已達境界上限，未來會繼續擴充。');return}if(state.cultivation<need){log(`修為不足：需要 ${need} 修為。`);return}const stoneCost=breakthroughStoneCost();if(state.stones<stoneCost){log(`突破需要 ${stoneCost} 靈石，目前只有 ${state.stones}。`);return}state.stones-=stoneCost;if(Math.random()<.85){state.cultivation-=need;state.realm++;state.hp=maxHp();state.mp=maxMp();log(`突破成功！進入 ${realmNames[state.realm]}。`);tone(920,.75);particles(player.position.x,player.position.z,0xffd98e);$('flash').classList.add('on');setTimeout(()=>$('flash').classList.remove('on'),100)}else{state.cultivation=Math.max(0,state.cultivation-20);log(`突破未成，消耗 ${stoneCost} 靈石與 20 修為，可再次嘗試。`)}save();refresh()}
-function refresh(){const hp=Math.min(state.hp,maxHp()),mp=Math.min(state.mp,maxMp());$('status').textContent=`${state.name}｜Lv.${state.level} ${state.profession}｜${realmNames[Math.min(state.realm,8)]}｜${state.sect}`;const meters=[['氣血',hp,maxHp(),'red'],['靈力',mp,maxMp(),'blue'],['人物 EXP',state.exp,expNeed(),'green'],['境界修為',state.cultivation,needCult[Math.min(state.realm,8)],'gold']];$('meters').innerHTML=meters.map(m=>`<div class="meter"><div><span>${m[0]}</span><span>${Math.floor(m[1])} / ${m[2]}</span></div><div class="track"><div class="fill ${m[3]}" style="width:${Math.min(100,100*m[1]/m[2])}%"></div></div></div>`).join('');$('resources').textContent=`攻擊 ${atk()}｜防禦 ${def()}｜靈石 ${state.stones}｜靈草 ${state.herbs}｜丹藥 ${state.potions}`;$('zoneName').textContent=zoneNames[activeZone];$('zoneInfo').textContent=activeZone==='city'?'安全區 · 靠近建築按 E':activeZone==='forest'?'妖獸 Lv.1–5 · E 拾取':activeZone==='valley'?'妖獸 Lv.5–10 · 探索寶箱與秘境':activeZone==='dungeon'?'青木 → 玄晶 → 星輝 · 啟動三座機關':expansionData[activeZone]?.name+' · 專屬材料與世界 Boss';$('quest').innerHTML=`<b style="color:#f4d58a">📜 青木林歷練</b><div>擊敗妖獸：${state.quest.kills}/5</div><div>採集靈草：${state.quest.herbs}/3</div><div>擊敗守衛：${state.quest.boss}/1</div><div style="color:#aac9b5">可在主城宗門委託使者領取獎勵</div>`;for(let i=0;i<4;i++){const k=state.equipped[i];$('skill'+(i+1)).textContent=`${i+1} · ${techs[k]?.name||'空'}`;}}function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-window.closePanel=function(){dialog=null;$('modal').hidden=true};window.openPanel=function(type){dialog=type;$('modal').hidden=false;const titles={character:'角色出身',skills:'功法與四格技能',skillbooks:'📖 功法閣 · 研習技能',bag:'背包與材料',equipment:'⚔ 裝備強化與套裝',sect:'宗門與修仙流派',quest:'宗門委託',market:'靈寶商會',cultivate:'修煉洞府',craft:'丹鼎閣',save:'存檔與設定',map:'世界地圖',teleport:'🌀 傳送陣 · 選擇目的地',talents:'🌟 天賦修行',warehouse:'🏛 仙府倉庫'};$('modalTitle').textContent=titles[type];let h='';
+function cultivationCost(){return Math.round(4+Math.pow(state.realm+1,1.65)*3)}
+function breakthroughStoneCost(){return Math.round(35*Math.pow(1.22,state.realm))}
+function cultivate(times=1){if(activeZone!=='city'){log('請回太初仙城修煉。');return}const cost=cultivationCost()*times;if(state.stones<cost){log(`靈石不足：閉關 ${times} 次需要 ${cost} 靈石，現有 ${state.stones}。`);return}state.stones-=cost;let gain=0;for(let i=0;i<times;i++)gain+=20+Math.floor(Math.random()*11);gain=Math.round(gain*(1+sectCultBonus()+Math.min(.4,(state.practiceLevel-1)*.004)));state.cultivation+=gain;practiceGain(Math.round(gain*.75));state.mp=Math.min(maxMp(),state.mp+3*times);particles(player.position.x,player.position.z,0x9fe8ff);tone(480,.4);log(`閉關吐納 ${times} 次，消耗 ${cost} 靈石，修為 +${gain}。`);save();refresh()}
+function breakthrough(){ensureV410();if(state.realm>=realmNames.length-1){log('已達太初道祖最高境界！');return}const need=needCult[state.realm];if(state.cultivation<need){log(`修為不足：需要 ${need} 修為。`);return}const stoneCost=breakthroughStoneCost();if(state.stones<stoneCost){log(`突破需要 ${stoneCost} 靈石。`);return}const major=state.realm>=11&&((state.realm-11)%4===0);const rate=Math.min(.96,Math.max(.58,.86+(state.practiceLevel-1)*.002+sectRankBonus()*.01-(major?.15:0)));state.stones-=stoneCost;if(Math.random()<rate){state.cultivation-=need;state.realm++;state.hp=maxHp();state.mp=maxMp();practiceGain(20+state.realm*3);log(`突破成功！進入 ${realmName()}。${major?'渡過大境界天劫！':''}`);v420BreakthroughVisual(true);tone(920,.75);particles(player.position.x,player.position.z,0xffd98e);$('flash').classList.add('on');setTimeout(()=>$('flash').classList.remove('on'),100)}else{state.cultivation=Math.max(0,state.cultivation-Math.ceil(need*.06));log(`突破未成，消耗 ${stoneCost} 靈石；保留大部分修為，可再次挑戰。`);v420BreakthroughVisual(false)}save();refresh()}
+function refresh(){const hp=Math.min(state.hp,maxHp()),mp=Math.min(state.mp,maxMp());$('status').textContent=`${state.name}｜Lv.${state.level} ${state.profession}｜${realmName()}｜修行 Lv.${state.practiceLevel}｜${state.sect}`;const meters=[['氣血',hp,maxHp(),'red'],['靈力',mp,maxMp(),'blue'],['人物 EXP',state.exp,expNeed(),'green'],['境界修為',state.cultivation,needCult[Math.min(state.realm,needCult.length-1)],'gold'],['修行經驗',state.practiceExp,practiceNeed(state.practiceLevel),'blue']];$('meters').innerHTML=meters.map(m=>`<div class="meter"><div><span>${m[0]}</span><span>${Math.floor(m[1])} / ${m[2]}</span></div><div class="track"><div class="fill ${m[3]}" style="width:${Math.min(100,100*m[1]/m[2])}%"></div></div></div>`).join('');$('resources').textContent=`攻擊 ${atk()}｜防禦 ${def()}｜靈石 ${state.stones}｜靈草 ${state.herbs}｜丹藥 ${state.potions}`;$('zoneName').textContent=zoneNames[activeZone];$('zoneInfo').textContent=activeZone==='city'?'安全區 · 靠近建築按 E':activeZone==='forest'?'妖獸 Lv.1–5 · E 拾取':activeZone==='valley'?'妖獸 Lv.5–10 · 探索寶箱與秘境':activeZone==='dungeon'?'青木 → 玄晶 → 星輝 · 啟動三座機關':expansionData[activeZone]?.name+' · 專屬材料與世界 Boss';$('quest').innerHTML=`<b style="color:#f4d58a">📜 青木林歷練</b><div>擊敗妖獸：${state.quest.kills}/5</div><div>採集靈草：${state.quest.herbs}/3</div><div>擊敗守衛：${state.quest.boss}/1</div><div style="color:#aac9b5">可在主城宗門委託使者領取獎勵</div>`;for(let i=0;i<4;i++){const k=state.equipped[i];$('skill'+(i+1)).textContent=`${i+1} · ${techs[k]?.name||'空'}`;}}function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+window.closePanel=function(){dialog=null;$('modal').hidden=true};window.openPanel=function(type){dialog=type;$('modal').hidden=false;const titles={test:'🧪 測試模式',character:'角色出身',skills:'功法與四格技能',skillbooks:'📖 功法閣 · 研習技能',bag:'背包與材料',equipment:'⚔ 裝備強化與套裝',sect:'宗門與修仙流派',quest:'宗門委託',market:'靈寶商會',cultivate:'修煉洞府',craft:'丹鼎閣',save:'存檔與設定',map:'世界地圖',teleport:'🌀 傳送陣 · 選擇目的地',talents:'🌟 天賦修行',warehouse:'🏛 仙府倉庫'};$('modalTitle').textContent=titles[type];let h='';
 if(type==='character'){h=`<p>你可以選擇初始專精。職業不會阻止你學習其他功法，跨流派宗門需額外考核。</p><label>道號</label><input id="charname" maxlength="12" value="${safeText(state.name)}" style="width:100%;padding:10px;background:#294535;color:white;border:1px solid #7c967c"><p>職業</p><select id="job" onchange="window.updateSectOptions()">${Object.keys(sects).map(j=>`<option ${j===state.profession?'selected':''}>${j}</option>`).join('')}</select><p>初始宗門</p><select id="initialSect"></select><p><button onclick="window.pickOrigin()">確認出身</button></p>`}
-else if(type==='cultivate'){h=`<p>在洞府凝神吐納。每次修煉需消耗靈石，境界越高費用越高；修煉不消耗年齡。</p><p>持有靈石：${state.stones}｜每次修煉：${cultivationCost()} 靈石｜突破額外費用：${breakthroughStoneCost()} 靈石（失敗仍消耗）。</p><div class="flex"><button onclick="window.doCultivate(1)">修煉一次</button><button onclick="window.doCultivate(5)">閉關 ×5</button><button onclick="window.doCultivate(10)">閉關 ×10</button><button class="highlight" onclick="window.doBreakthrough()">突破境界</button></div><p>目前：${realmNames[state.realm]}｜修為 ${state.cultivation}｜突破需要 ${needCult[state.realm]}。</p>`}
+else if(type==='cultivate'){h=`<p>在洞府凝神吐納。每次修煉需消耗靈石，境界越高費用越高；修煉不消耗年齡。</p><p>持有靈石：${state.stones}｜每次修煉：${cultivationCost()} 靈石｜突破額外費用：${breakthroughStoneCost()} 靈石（失敗仍消耗）。</p><div class="flex"><button onclick="window.doCultivate(1)">修煉一次</button><button onclick="window.doCultivate(5)">閉關 ×5</button><button onclick="window.doCultivate(10)">閉關 ×10</button><button class="highlight" onclick="window.doBreakthrough()">突破境界</button></div><p>目前：${realmName()}（第 ${state.realm+1}/${realmNames.length} 階）｜修行 Lv.${state.practiceLevel}/100｜修為 ${state.cultivation}｜突破需要 ${state.realm>=realmNames.length-1?'已達最高境界':needCult[state.realm]}。<br>宗門修煉加成 +${Math.round(sectCultBonus()*100)}%，修行等級再提升修為獲取。大境界突破成功率較低。</p>`}
 else if(type==='skills'){h=`<p><button onclick="window.openPanel('skillbooks')">📖 前往功法閣研習新技能</button></p><p>技能可永久收藏；四格快捷欄可自由配置。熟練度主要透過有效施法提升。</p><div class="rows">${[0,1,2,3].map(i=>`<div class="item"><div>快捷鍵 ${i+1}</div><select style="width:65%" onchange="window.assignSkill(${i},this.value)">${state.skills.map(k=>`<option value="${k}" ${k===state.equipped[i]?'selected':''}>${techs[k].name}</option>`).join('')}</select></div>`).join('')}</div><h3>已習得功法</h3>${state.skills.map(k=>`<div class="item"><div>${techs[k].name}<small>${techs[k].desc}｜熟練度 ${(state.mastery[k]||0)}</small></div></div>`).join('')}`}
-else if(type==='talents'){h=`<p>每提升 1 個人物等級獲得 1 點天賦點。每項最多 5 級。</p><p><b>可用點數：${talentFree()}</b>｜已分配：${talentSpent()}｜人物 Lv.${state.level}</p><div class="rows">${Object.entries(talentDefs).map(([k,d])=>`<div class="item"><div><b>${d.name} ${talentRank(k)}/5</b><small>${d.desc}</small></div><button ${talentFree()<=0||talentRank(k)>=5?'disabled':''} onclick="window.raiseTalent('${k}')">升級 +1</button></div>`).join('')}</div><p class="note">重新分配天賦需要在主城支付 100 靈石。</p><button onclick="window.resetTalents()">重置天賦（100 靈石）</button>`}
+else if(type==='talents'){h=`<p>每提升 1 個人物等級獲得 1 點天賦點。每項最多 5 級；天賦點不會因調整測試等級而超額分配。</p><p><b>可用點數：${talentFree()}</b>｜已分配：${talentSpent()}｜人物 Lv.${state.level}</p><div class="rows">${Object.entries(talentDefs).map(([k,d])=>`<div class="item"><div><b>${d.name} ${talentRank(k)}/5</b><small>${d.desc}</small></div><button ${talentFree()<=0||talentRank(k)>=5?'disabled':''} onclick="window.raiseTalent('${k}')">升級 +1</button></div>`).join('')}</div><p class="note">重新分配天賦需要在主城支付 100 靈石。</p><button onclick="window.resetTalents()">重置天賦（100 靈石）</button>`}
 else if(type==='warehouse'){ensureV18();const home=activeZone==='city';h=`<p>仙府倉庫 · 裝備容量 ${state.warehouse.items.length}/40。<b>${home?'目前位於主城，可存取物品':'目前不在主城，只能查看，請傳送回太初仙城存取'}</b></p><h3>背包裝備（${state.inventory.length}）</h3><div class="rows">${state.inventory.map((it,i)=>`<div class="item"><div>${safeText(equipmentDefs[it.id]?.name||it.id)} +${it.plus}</div><button ${!home||state.warehouse.items.length>=40?'disabled':''} onclick="window.storeGear(${i})">存入</button></div>`).join('')||'<p>背包沒有裝備。</p>'}</div><h3>倉庫裝備（${state.warehouse.items.length}/40）</h3><div class="rows">${state.warehouse.items.map((it,i)=>`<div class="item"><div>${safeText(equipmentDefs[it.id]?.name||it.id)} +${it.plus}</div><button ${!home?'disabled':''} onclick="window.takeGear(${i})">取出</button></div>`).join('')||'<p>倉庫目前沒有裝備。</p>'}</div><h3>材料存取（每次 10 個，不足則全部）</h3><div class="rows">${[...new Set([...Object.keys(state.materials),...Object.keys(state.warehouse.materials)])].map((m,i)=>`<div class="item"><div><b>${safeText(m)}</b><small>背包 ${state.materials[m]||0}｜倉庫 ${state.warehouse.materials[m]||0}</small></div><div class="flex"><button ${!home||!(state.materials[m]>0)?'disabled':''} onclick="window.moveMaterial(${i},true)">存 10</button><button ${!home||!(state.warehouse.materials[m]>0)?'disabled':''} onclick="window.moveMaterial(${i},false)">取 10</button></div></div>`).join('')||'<p>尚無材料。</p>'}</div>`}
 else if(type==='skillbooks'){const req={sword:1,fire:1,punch:1,thunder:3,shield:3,wind:3,heal:4,root:5,stararray:10};h=`<p>功法閣：使用靈石研習尚未習得的技能，學會後可在「✦ 功法」配置到四格快捷欄。星輝劍陣仍可透過秘境首通免費領悟。</p><div class="rows">${Object.entries(techs).map(([k,t])=>{const lv=req[k]||1,cost=60+lv*40,known=state.skills.includes(k);return `<div class="item"><div><b>${t.name}</b><small>${t.desc}｜Lv.${lv}+｜靈石 ${cost}</small></div><button ${known||state.level<lv||state.stones<cost?'disabled':''} onclick="window.learnSkill('${k}')">${known?'已習得':state.level<lv?'等級不足':'研習'}</button></div>`}).join('')}</div>`}
 else if(type==='bag'){h=`<p><button onclick="window.openPanel('warehouse')">🏛 開啟倉庫</button> <button onclick="window.openPanel('equipment')">⚔ 查看裝備（${state.inventory.length} 件）</button></p><p>靈石：${state.stones}｜靈草：${state.herbs}｜回春丹：${state.potions}</p><button onclick="window.usePotion()">使用回春丹（HP +50）</button><h3>妖獸材料</h3>${Object.entries(state.materials).map(([k,v])=>`<div class="item">${safeText(k)} × ${v}</div>`).join('')||'<p>尚未取得材料。</p>'}`}
@@ -300,13 +339,13 @@ else if(type==='equipment'){
  const items=state.inventory.map((it,i)=>{const d=equipmentDefs[it.id];return `<div class="item"><div><b>${d.name} +${it.plus} · ${d.quality}</b><small>${equipmentSlots[d.slot]}｜Lv.${d.level}+｜${stats(it)}<br>${d.desc}</small></div><div class="flex"><button ${state.level<d.level?'disabled':''} onclick="window.equipGear(${i})">${state.level<d.level?'等級不足':'裝備'}</button><button ${it.plus>=10?'disabled':''} onclick="window.enhanceGear('bag',${i})">強化</button></div></div>`}).join('');
  h=`<p>⚔ 三個裝備欄位 · 裝備獨立強化 +0～+10，每級屬性提高 12%。強化失敗不降級、不消失，只消耗材料。</p><p>目前總加成：攻擊 +${equipBonus('atk')}｜防禦 +${equipBonus('def')}｜HP +${equipBonus('hp')}｜MP +${equipBonus('mp')}</p><h3>套裝效果</h3>${Object.entries(setNames).map(([k,name])=>`<p>${name}：${sets[k]||0}/3 件 · 2 件${k==='fire'?'攻擊 +12':k==='ice'?'防禦 +15':'MP +65'}；3 件${k==='fire'?'HP +100':k==='ice'?'HP +160':'攻擊 +25、HP +180'}</p>`).join('')}<h3>已裝備</h3><div class="rows">${gear}</div><h3>裝備背包（${state.inventory.length} 件）</h3><div class="rows">${items||'<p>尚無裝備，前往靈寶商會或新地圖挑戰 Boss。</p>'}</div><p class="note">強化費用隨等級增加，材料依裝備系列使用靈霧晶砂、火靈礦、玄冰晶或九霄星石。+1～+3 必定成功，後續成功率逐漸下降。</p>`;
 }
-else if(type==='sect'){h=`<p>目前宗門：${state.sect}｜身分：${state.sectRank}｜宗門貢獻：${state.contribution}</p><p>同流派可完成基本入門，跨流派需通過額外考核。</p><select id="newsect">${Object.entries(sects).flatMap(([j,arr])=>arr.map(s=>`<option value="${s}">${s}（${j}）</option>`)).join('')}</select><p><button onclick="window.joinSect()">申請加入／轉宗</button></p><p class="note">第一版跨流派考核：Lv.3 以上，擊敗至少 3 隻妖獸，並交付 20 靈石。後續將擴充不同宗門的專屬試煉。</p>`}
+else if(type==='sect'){ensureV410();const ranks=sectRanks(),rankIndex=sectRankBonus(),next=ranks[rankIndex+1];const missions=[['hunt','除妖歷練','kills',5,35,45],['gather','靈草供奉','herbs',3,20,35],['guard','首領討伐','boss',1,60,90]];h=`<p>🏯 <b>${safeText(state.sect)}</b>｜${state.sectRank}｜可用貢獻 ${state.contribution}｜累計功勳 ${state.sectMerit}</p><p>宗門流派：${sectStyle()}｜閉關修為加成 +${Math.round(sectCultBonus()*100)}%｜目前修行 Lv.${state.practiceLevel}</p><h3>宗門晉升</h3><p>${next?`下一階：${next.name}｜人物 Lv.${next.level}、累計功勳 ${next.merit}`:'已達宗門最高職位'}</p><button ${!next||state.level<next.level||state.sectMerit<next.merit?'disabled':''} onclick="window.sectPromote()">申請晉升</button><h3>宗門委託（每項可重複完成）</h3><div class="rows">${missions.map(([id,name,key,goal,stone,merit])=>{const last=state.sectMissions[id]||0,progress=Math.max(0,(state.quest[key]||0)-last);return `<div class="item"><div><b>${name}</b><small>${Math.min(goal,progress)}/${goal}｜${stone} 靈石、${merit} 貢獻及功勳</small></div><button ${progress<goal?'disabled':''} onclick="window.sectMission('${id}')">完成委託</button></div>`}).join('')}</div><h3>宗門寶庫</h3><div class="rows"><div class="item"><div>凝神靈丹 ×1<small>80 貢獻｜增加 160 修為及修行經驗</small></div><button ${state.contribution<80?'disabled':''} onclick="window.sectExchange('cult')">兌換</button></div><div class="item"><div>回春丹 ×3<small>45 貢獻</small></div><button ${state.contribution<45?'disabled':''} onclick="window.sectExchange('potion')">兌換</button></div><div class="item"><div>宗門靈石 ×180<small>100 貢獻</small></div><button ${state.contribution<100?'disabled':''} onclick="window.sectExchange('stone')">兌換</button></div></div><h3>轉換宗門</h3><select id="newsect">${Object.entries(sects).flatMap(([j,arr])=>arr.map(s=>`<option value="${s}" ${s===state.sect?'selected':''}>${s}（${j}）</option>`)).join('')}</select><button onclick="window.joinSect()">申請加入／轉宗</button><p class="note">轉宗會重設宗門職位、貢獻與宗門功勳；跨流派仍需考核。宗門任務依實際擊殺與採集進度計算。</p>${v430TrialPanel()}`}
 else if(type==='quest'){const q=state.quest;h=`<p>任務可自由完成，不需先接主線。</p><div class="rows">${[['kill','青木林除妖','kills',5,30,20],['herb','採藥入門','herbs',3,20,15],['boss','守衛試煉','boss',1,75,50]].map(([id,name,key,goal,stone,con])=>`<div class="item"><div>${name}<small>${q[key]}/${goal}｜獎勵 ${stone} 靈石、${con} 宗門貢獻</small></div><button ${q[key]<goal||q.claimed.includes(id)?'disabled':''} onclick="window.claimQuest('${id}',${stone},${con})">${q.claimed.includes(id)?'已領取':'領取'}</button></div>`).join('')}</div>`}
 else if(type==='market'){h=`<p>靈石：${state.stones}</p><div class="rows"><div class="item"><div>回春丹<small>恢復 50 氣血 · 18 靈石</small></div><button onclick="window.buy('potion')">購買</button></div><div class="item"><div>凝露靈草<small>煉丹材料 · 10 靈石</small></div><button onclick="window.buy('herb')">購買</button></div><h3>武器、護甲與飾品</h3><div class="rows">${['woodenSword','ironSword','clothRobe','spiritRobe','jade','mistJade'].map(id=>{const d=equipmentDefs[id];return `<div class="item"><div>${d.name} · ${d.quality}<small>Lv.${d.level}+｜${equipmentSlots[d.slot]}｜攻擊 +${d.atk} 防禦 +${d.def} HP +${d.hp} MP +${d.mp}</small></div><button onclick="window.buyGear('${id}')">${d.price} 靈石</button></div>`}).join('')}</div></div>`}
 else if(type==='craft'){h=`<p>煉製回春丹消耗 2 靈草與 5 靈石。</p><button onclick="window.craft()">煉製回春丹</button><h3>裝備鍛造 · 三界材料</h3><p>鍛造後可至「⚔ 裝備」穿戴、強化至 +10。</p><div class="rows">${Object.entries(forgingRecipes).map(([id,r])=>{const d=equipmentDefs[id];return `<div class="item"><div><b>${d.name} · ${d.quality}</b><small>Lv.${d.level}+｜${r.mat} ×${r.n}｜靈石 ${r.stones}</small></div><button onclick="window.forgeGear('${id}')">鍛造</button></div>`}).join('')}</div>`}
 else if(type==='teleport'){const destinations=[['city','🏯 太初仙城','主城與修煉'],['forest','🌲 青木林','新手歷練'],['valley','🌿 靈霧山谷','山谷與野外 Boss'],['dungeon','🔮 靈霧秘境','機關與秘境 Boss'],['firelands','🔥 赤焰荒原','火山、熔岩與炎獄巨獸'],['snowlands','❄️ 玄冰雪域','雪山、冰晶與玄冰龍王'],['skylands','☁️ 九霄仙境','浮空仙宮與九霄天君']];h='<p>選擇傳送目的地，抵達安全位置。等級不足的地圖無法進入。</p><div class="rows">'+destinations.map(([z,name,desc])=>{const min=zoneLevel[z],locked=state.level<min,here=z===activeZone;return `<div class="item"><div><b>${name}</b><small>${desc}｜Lv.${min}+</small></div><button ${locked||here?'disabled':''} onclick="window.teleportTo('${z}')">${here?'目前所在地':locked?'需 Lv.'+min:'傳送'}</button></div>`}).join('')+'</div>'}
-else if(type==='map'){h='<p>世界地圖：太初仙城 → 青木林 → 靈霧山谷 → 靈霧秘境 → 赤焰荒原（Lv.8）→ 玄冰雪域（Lv.12）→ 九霄仙境（Lv.16）。靠近各地傳送陣按 E 選擇目的地。</p><p>靈霧寶箱：'+state.valley.chests.length+'/6｜機關：'+state.valley.puzzles.filter(Boolean).length+'/3｜秘境首通：'+(state.valley.firstClear?'已完成':'未完成')+'</p>'}
-
+else if(type==='map'){h=renderWorldMap320()}
+else if(type==='test'){h=`<p>🧪 <b>V4.1 開發測試工具</b> · 可直接調整人物等級、領取材料與全套裝備。</p><p>目前：Lv.${state.level}｜${realmNames[Math.min(state.realm,8)]}｜靈石 ${state.stones}</p><div class="flex">${[5,10,20,35,50,75,100].map(lv=>`<button onclick="window.testSetLevel(${lv})">設定 Lv.${lv}</button>`).join('')}<button class="highlight" onclick="window.testAddResources()">領取資源與測試裝備</button><button onclick="window.testCultivation410()">領取突破修為</button></div><p class="note">測試操作會修改當前存檔，建議先至「存檔」匯出 JSON 備份。</p>`}
 else if(type==='save'){h=`<p>自動儲存人物等級、修為、宗門、功法、物資和目前地圖位置。</p><div class="flex"><button onclick="window.manualSave()">手動存檔</button><button onclick="window.exportSave()">匯出 JSON 備份</button><button onclick="document.getElementById('import').click()">匯入備份</button><button onclick="window.toggleAudio()">音效：${audioEnabled?'開啟':'關閉'}</button><button onclick="window.unstuck()">脫離卡點</button><button onclick="window.resetGame()">重置進度（雙重確認）</button></div><p class="note">Three.js 透過網路 CDN 載入；遊戲資料只儲存在目前瀏覽器。</p>`}
 $('modalBody').innerHTML=h;if(type==='character')window.updateSectOptions()};
 window.learnSkill=k=>{const req={sword:1,fire:1,punch:1,thunder:3,shield:3,wind:3,heal:4,root:5,stararray:10};const lv=req[k]||1,cost=60+lv*40;if(!techs[k]||state.skills.includes(k)||state.level<lv||state.stones<cost)return;state.stones-=cost;state.skills.push(k);log('領悟功法：'+techs[k].name);save();refresh();openPanel('skillbooks')};
@@ -322,9 +361,13 @@ window.buyGear=id=>{const d=equipmentDefs[id];if(!d||!d.price)return;if(state.st
 window.forgeGear=id=>{const r=forgingRecipes[id];if(!r)return;if((state.materials[r.mat]||0)<r.n||state.stones<r.stones)return alert(r.mat+' 或靈石不足。');state.materials[r.mat]-=r.n;state.stones-=r.stones;addEquipment(id);save();refresh();openPanel('craft')};
 window.teleportTo=z=>{const required=zoneLevel;if(dialog!=='teleport'||!Object.prototype.hasOwnProperty.call(required,z))return;if(state.level<required[z]){log('等級不足，無法傳送至 '+zoneNames[z]+'，需要 Lv.'+required[z]+'。');openPanel('teleport');return}if(z===activeZone){closePanel();return}changeZone(z);log('🌀 傳送成功，抵達 '+zoneNames[z]+'。')};
 window.updateSectOptions=()=>{$('initialSect').innerHTML=sects[$('job').value].map(s=>`<option ${s===state.sect?'selected':''}>${s}</option>`).join('')};window.pickOrigin=()=>{state.name=$('charname').value.trim().slice(0,12)||'無名修士';state.profession=$('job').value;state.sect=$('initialSect').value;state.skills=[...new Set([...state.skills,...skillStarts[state.profession]])];state.equipped=[...skillStarts[state.profession]];state.hp=Math.min(maxHp(),state.hp+25);state.mp=maxMp();rebuildPlayerModel();save();refresh();openPanel('character');log('已選擇 '+state.profession+' · '+state.sect)};
-window.joinSect=()=>{const desired=$('newsect').value,from=Object.entries(sects).find(([,a])=>a.includes(desired))[0];if(desired===state.sect)return;const diff=from!==state.profession;if(diff&&(state.level<3||state.stats.kills<3||state.stones<20)){alert('跨流派考核條件：Lv.3、擊敗 3 妖獸、20 靈石。');return}if(!confirm('確定申請加入 '+desired+'？原功法會保留。'))return;if(diff)state.stones-=20;state.sect=desired;state.contribution=0;state.sectRank='外門弟子';log('正式加入 '+desired+'。');save();refresh();openPanel('sect')};
-
-window.assignSkill=(i,k)=>{if(!state.skills.includes(k))return;const j=state.equipped.indexOf(k);if(j>=0){state.equipped[j]=state.equipped[i]}state.equipped[i]=k;save();refresh();openPanel('skills')};window.doCultivate=n=>{cultivate(n);openPanel('cultivate')};window.doBreakthrough=()=>{breakthrough();openPanel('cultivate')};window.usePotion=()=>{if(!state.potions)return log('沒有回春丹。');state.potions--;state.hp=Math.min(maxHp(),state.hp+50);log('服下回春丹，恢復氣血。');save();refresh();openPanel('bag')};window.buy=k=>{const price=k==='potion'?18:10;if(state.stones<price)return alert('靈石不足。');state.stones-=price;if(k==='potion')state.potions++;else state.herbs++;save();refresh();openPanel('market')};window.craft=()=>{if(state.herbs<2||state.stones<5)return alert('材料不足。');state.herbs-=2;state.stones-=5;state.potions++;log('煉製回春丹成功！');save();refresh();openPanel('craft')};window.claimQuest=(id,stone,con)=>{if(state.quest.claimed.includes(id))return;const target={kill:'kills',herb:'herbs',boss:'boss'}[id],required={kill:5,herb:3,boss:1}[id];if(state.quest[target]<required)return;state.quest.claimed.push(id);state.stones+=stone;state.contribution+=con;state.cultivation+=10;save();refresh();openPanel('quest')};window.manualSave=()=>save(false);window.exportSave=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='太初仙域-存檔.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};window.resetGame=()=>{if(!confirm('要重置遊戲嗎？建議先匯出備份。'))return;if(!confirm('最後確認：確定刪除這個瀏覽器的遊戲進度？'))return;localStorage.removeItem(SAVE);state=fresh();rebuildPlayerModel();changeZone('city');log('新修仙人生開始！')};window.unstuck=()=>{if(!confirm('要執行脫離卡點嗎？角色會被傳送到目前地圖的安全空地。'))return;const safe=getSafePosition(activeZone,safeSpawns[activeZone]?.[0]);player.position.set(safe.x,0,safe.z);state.position={x:safe.x,z:safe.z};state.hp=Math.max(1,state.hp);state.mp=Math.max(0,Math.min(maxMp(),state.mp+10));log('已執行脫離卡點，角色回到安全位置。');save(false);refresh();if(dialog==='save')openPanel('save')};$('import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.version!==1||!Array.isArray(data.skills)||!Number.isFinite(data.level)||!data.position)throw Error('格式不符');if(!confirm('確定使用這份存檔覆蓋目前進度？'))return;state={...fresh(),...data,skillCd:{},materials:data.materials||{},inventory:Array.isArray(data.inventory)?data.inventory:[],gear:data.gear||{},valley:{...fresh().valley,...(data.valley||{})}};ensureV18();rebuildPlayerModel();resumeSaved();save();closePanel();log('已匯入存檔。')}catch(err){alert('無法匯入：'+err.message)}e.target.value=''});
+window.joinSect=()=>{const desired=$('newsect').value,from=Object.entries(sects).find(([,a])=>a.includes(desired))[0];if(desired===state.sect)return;const diff=from!==state.profession;if(diff&&(state.level<3||state.stats.kills<3||state.stones<20)){alert('跨流派考核條件：Lv.3、擊敗 3 妖獸、20 靈石。');return}if(!confirm('確定申請加入 '+desired+'？原功法會保留。'))return;if(diff)state.stones-=20;state.sect=desired;state.contribution=0;state.sectRank='外門弟子';state.sectMerit=0;state.sectMissions={};log('正式加入 '+desired+'。');save();refresh();openPanel('sect')};
+window.testSetLevel=(lv)=>{state.level=Math.max(1,Math.min(20,Math.floor(lv)));ensureV18();while(talentSpent()>state.level-1){const k=Object.keys(talentDefs).find(k=>state.talents[k]>0);if(!k)break;state.talents[k]--}state.exp=0;state.hp=maxHp();state.mp=maxMp();log('🧪 測試模式：人物調整至 Lv.'+state.level+'，氣血與靈力已補滿。');save();refresh();openPanel('test')};window.testAddResources=()=>{state.stones+=30000;state.potions+=50;state.herbs+=50;for(const m of ['靈霧晶砂','火靈礦','玄冰晶','九霄星石'])state.materials[m]=(state.materials[m]||0)+100;state.hp=maxHp();state.mp=maxMp();for(const id of Object.keys(equipmentDefs))if(!state.inventory.some(v=>itemOf(v)?.id===id)&&!Object.values(state.gear||{}).some(v=>itemOf(v)?.id===id))addEquipment(id);log('🧪 測試補給：靈石 +30000、回春丹 +50、靈草 +50、四種強化材料各 +100、全套測試裝備。');save();refresh();openPanel('test')};
+window.testCultivation410=()=>{state.cultivation+=Math.max(3000,needCult[state.realm]*3);state.stones+=Math.max(3000,breakthroughStoneCost()*3);practiceGain(1500);log('測試資源已領取，可連續測試突破。');save();refresh();openPanel('test')};
+window.sectPromote=()=>{ensureV410();const r=sectRanks()[sectRankBonus()+1];if(!r||state.level<r.level||state.sectMerit<r.merit)return;state.sectRank=r.name;log('宗門晉升：'+r.name+'！');save();refresh();openPanel('sect')};
+window.sectMission=id=>{ensureV410();const info={hunt:['kills',5,35,45],gather:['herbs',3,20,35],guard:['boss',1,60,90]}[id];if(!info)return;const [key,goal,stone,merit]=info,last=state.sectMissions[id]||0;if((state.quest[key]||0)-last<goal)return;state.sectMissions[id]=last+goal;state.stones+=stone;state.contribution+=merit;state.sectMerit+=merit;state.cultivation+=Math.round(merit*.6);practiceGain(merit);log('宗門委託完成：貢獻 +'+merit+'、靈石 +'+stone);save();refresh();openPanel('sect')};
+window.sectExchange=id=>{const cost={cult:80,potion:45,stone:100}[id];if(!cost||state.contribution<cost)return;state.contribution-=cost;if(id==='cult'){state.cultivation+=160;practiceGain(120)}if(id==='potion')state.potions+=3;if(id==='stone')state.stones+=180;log('宗門寶庫兌換成功！');save();refresh();openPanel('sect')};
+window.assignSkill=(i,k)=>{if(!state.skills.includes(k))return;const j=state.equipped.indexOf(k);if(j>=0){state.equipped[j]=state.equipped[i]}state.equipped[i]=k;save();refresh();openPanel('skills')};window.doCultivate=n=>{cultivate(n);openPanel('cultivate')};window.doBreakthrough=()=>{breakthrough();openPanel('cultivate')};window.usePotion=()=>{if(!state.potions)return log('沒有回春丹。');state.potions--;state.hp=Math.min(maxHp(),state.hp+50);log('服下回春丹，恢復氣血。');save();refresh();openPanel('bag')};window.buy=k=>{const price=k==='potion'?18:10;if(state.stones<price)return alert('靈石不足。');state.stones-=price;if(k==='potion')state.potions++;else state.herbs++;save();refresh();openPanel('market')};window.craft=()=>{if(state.herbs<2||state.stones<5)return alert('材料不足。');state.herbs-=2;state.stones-=5;state.potions++;log('煉製回春丹成功！');save();refresh();openPanel('craft')};window.claimQuest=(id,stone,con)=>{if(state.quest.claimed.includes(id))return;const target={kill:'kills',herb:'herbs',boss:'boss'}[id],required={kill:5,herb:3,boss:1}[id];if(state.quest[target]<required)return;state.quest.claimed.push(id);state.stones+=stone;state.contribution+=con;state.cultivation+=10;save();refresh();openPanel('quest')};window.manualSave=()=>save(false);window.exportSave=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='太初仙域-存檔.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};window.resetGame=()=>{if(!confirm('要重置遊戲嗎？建議先匯出備份。'))return;if(!confirm('最後確認：確定刪除這個瀏覽器的遊戲進度？'))return;localStorage.removeItem(SAVE);state=fresh();rebuildPlayerModel();changeZone('city');log('新修仙人生開始！')};window.unstuck=()=>{if(!confirm('要執行脫離卡點嗎？角色會被傳送到目前地圖的安全空地。'))return;const safe=getSafePosition(activeZone,safeSpawns[activeZone]?.[0]);player.position.set(safe.x,0,safe.z);state.position={x:safe.x,z:safe.z};state.hp=Math.max(1,state.hp);state.mp=Math.max(0,Math.min(maxMp(),state.mp+10));log('已執行脫離卡點，角色回到安全位置。');save(false);refresh();if(dialog==='save')openPanel('save')};$('import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.version!==1||!Array.isArray(data.skills)||!Number.isFinite(data.level)||!data.position)throw Error('格式不符');if(!confirm('確定使用這份存檔覆蓋目前進度？'))return;state={...fresh(),...data,skillCd:{},materials:data.materials||{},inventory:Array.isArray(data.inventory)?data.inventory:[],gear:data.gear||{},valley:{...fresh().valley,...(data.valley||{})}};ensureV18();ensureV410();ensureV430();rebuildPlayerModel();resumeSaved();save();closePanel();log('已匯入存檔。')}catch(err){alert('無法匯入：'+err.message)}e.target.value=''});
 let audioEnabled=true,audioCtx=null,musicOn=false,musicGain=null,sfxGain=null,musicTimer=null,musicStep=0,musicZone='',musicVol=.24,sfxVol=.4;
 function getAudio(){if(!audioCtx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;audioCtx=new C();musicGain=audioCtx.createGain();sfxGain=audioCtx.createGain();musicGain.gain.value=musicVol;sfxGain.gain.value=sfxVol;musicGain.connect(audioCtx.destination);sfxGain.connect(audioCtx.destination)}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx}
 function note(freq,duration=.45,volume=.075,kind='sine',start=0,output=null){const c=getAudio();if(!c)return;const t=c.currentTime+start;const osc=c.createOscillator(),gain=c.createGain();osc.type=kind;osc.frequency.value=freq;gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(volume,t+.055);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);osc.connect(gain);gain.connect(output||sfxGain);osc.start(t);osc.stop(t+duration+.02)}
@@ -345,14 +388,589 @@ function stopMusic(){musicOn=false;clearTimeout(musicTimer);$('musicBtn').textCo
 $('musicBtn').addEventListener('click',()=>musicOn?stopMusic():startMusic());$('musicVolume').addEventListener('input',e=>{musicVol=Number(e.target.value)/100;if(musicGain)musicGain.gain.value=musicVol});$('sfxVolume').addEventListener('input',e=>{sfxVol=Number(e.target.value)/100;if(sfxGain)sfxGain.gain.value=sfxVol});
 window.toggleAudio=()=>{audioEnabled=!audioEnabled;if(sfxGain)sfxGain.gain.value=audioEnabled?sfxVol:0;openPanel('save')};
 
-function onKey(e,down){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;const k=e.key.toLowerCase();if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();keys[k]=down;if(!down)return;if(k==='escape')closePanel();else if(dialog)return;else if(k==='e')tryInteract();else if(k==='u')window.unstuck();else if(k===' ')dash();else if('1234'.includes(k)&&k.length===1)skill(Number(k)-1);else if(k==='i')openPanel('bag');else if(k==='k')openPanel('skills');else if(k==='t')openPanel('talents');else if(k==='b')openPanel('warehouse');else if(k==='m')openPanel('map')};addEventListener('keydown',e=>onKey(e,true));addEventListener('keyup',e=>onKey(e,false));addEventListener('blur',()=>Object.keys(keys).forEach(k=>keys[k]=false));let drag=null;$('world').addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,moved:false,id:e.pointerId};$('world').setPointerCapture(e.pointerId)});$('world').addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>1.5)drag.moved=true;camYaw-=dx*.005;camPitch=Math.max(.15,Math.min(1.18,camPitch+dy*.004));drag.x=e.clientX;drag.y=e.clientY});$('world').addEventListener('pointerup',()=>{if(drag&&!drag.moved)attack();drag=null});$('world').addEventListener('wheel',e=>{e.preventDefault();camDist=Math.max(6,Math.min(24,camDist*(1+e.deltaY*.001)))},{passive:false});$('attack').onclick=attack;for(let i=0;i<4;i++)$('skill'+(i+1)).onclick=()=>skill(i);$('dash').onclick=dash;addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
-let walkCycle=0,walkBlend=0;let smoothTarget=new THREE.Vector3(0,1.3,0);function update(dt){nowT+=dt;updateStarField(dt);animateSky(dt);if(state.hp>0){state.hp=Math.min(maxHp(),state.hp+dt*(activeZone==='city'?2.6:.28));state.mp=Math.min(maxMp(),state.mp+dt*(activeZone==='city'?4.2:1.6))}attCd=Math.max(0,attCd-dt);dashCd=Math.max(0,dashCd-dt);dashTime=Math.max(0,dashTime-dt);invuln=Math.max(0,invuln-dt);shieldTime=Math.max(0,shieldTime-dt);speedBuff=Math.max(0,speedBuff-dt);attackSwing=Math.max(0,attackSwing-dt);for(const k in state.skillCd)state.skillCd[k]=Math.max(0,state.skillCd[k]-dt);
-const oldX=player.position.x,oldZ=player.position.z;if(!dialog){let fw=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0),side=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);if(fw||side||dashTime>0){if(!fw&&!side)fw=1;const len=Math.hypot(fw,side);const fx=-Math.sin(camYaw),fz=-Math.cos(camYaw),rx=Math.cos(camYaw),rz=-Math.sin(camYaw);const dx=(fx*fw+rx*side)/len,dz=(fz*fw+rz*side)/len;const s=dashTime>0?17:(speedBuff>0?8:5.8);safeMove(player,dx*s*dt,dz*s*dt);player.rotation.y=Math.atan2(dx,dz)}}const moved=Math.hypot(player.position.x-oldX,player.position.z-oldZ);const moving=moved>0.0001;walkBlend=THREE.MathUtils.lerp(walkBlend,moving?1:0,Math.min(1,dt*11));if(moving)walkCycle+=moved*2.9;for(const arm of playerArms){arm.group.rotation.x=Math.sin(walkCycle)*.52*walkBlend*arm.side;arm.group.rotation.z=0;}if(playerWeapon)playerWeapon.rotation.z=-attackSwing*5;if(playerAura)playerAura.rotation.z+=dt*.7;
+function onKey(e,down){if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;const k=e.key.toLowerCase();if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();keys[k]=down;if(!down)return;if(k==='escape')closePanel();else if(dialog)return;else if(k==='e')tryInteract();else if(k==='r')window.toggleMount310();else if(k==='p')window.togglePet310();else if(k==='u')window.unstuck();else if(k===' ')dash();else if('1234'.includes(k)&&k.length===1)skill(Number(k)-1);else if(k==='i')openPanel('bag');else if(k==='k')openPanel('skills');else if(k==='t')openPanel('talents');else if(k==='b')openPanel('warehouse');else if(k==='m')openPanel('map')};addEventListener('keydown',e=>onKey(e,true));addEventListener('keyup',e=>onKey(e,false));addEventListener('blur',()=>Object.keys(keys).forEach(k=>keys[k]=false));let drag=null;$('world').addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,moved:false,id:e.pointerId};$('world').setPointerCapture(e.pointerId)});$('world').addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>1.5)drag.moved=true;camYaw-=dx*.005;camPitch=Math.max(.15,Math.min(1.18,camPitch+dy*.004));drag.x=e.clientX;drag.y=e.clientY});$('world').addEventListener('pointerup',()=>{if(drag&&!drag.moved)attack();drag=null});$('world').addEventListener('wheel',e=>{e.preventDefault();camDist=Math.max(6,Math.min(24,camDist*(1+e.deltaY*.001)))},{passive:false});$('attack').onclick=attack;for(let i=0;i<4;i++)$('skill'+(i+1)).onclick=()=>skill(i);$('dash').onclick=dash;addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+let walkCycle=0,walkBlend=0;let smoothTarget=new THREE.Vector3(0,1.3,0);
+// V4.2.0: Boss 蓄力、可閃避範圍技與階段變化；視覺提示跟隨首領。
+function v420BossSkill(e,dt,d){
+ if(!e.boss||!e.active||!e.mesh)return false;
+ const m=e.mesh, u=m.userData;
+ if(!u.v420){
+  const color={forest:0x7de5a1,valley:0x72e8d9,dungeon:0xc99aff,firelands:0xff8358,snowlands:0x9edaff,skylands:0xffe7a0}[activeZone]||0xffd78a;
+  const g=new THREE.Group();g.name='V420_Boss_Warning';
+  const mat=new THREE.MeshBasicMaterial({color,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false});
+  const ring=new THREE.Mesh(new THREE.RingGeometry(3.45,3.85,56),mat);
+  ring.rotation.x=-Math.PI/2;ring.position.y=.12;g.add(ring);
+  const disc=new THREE.Mesh(new THREE.CircleGeometry(3.45,56),new THREE.MeshBasicMaterial({color,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
+  disc.rotation.x=-Math.PI/2;disc.position.y=.1;g.add(disc);
+  m.add(g);u.v420={g,ring,disc,clock:3+Math.random()*2,charge:0,phase:0,color};
+ }
+ const fx=u.v420;
+ if(e.hp!==undefined&&e.maxHp&&e.hp/e.maxHp<.45&&fx.phase===0){fx.phase=1;fx.clock=Math.min(fx.clock,1.5);log('⚠ 首領靈氣暴漲，進入狂暴階段！');}
+ if(fx.charge>0){
+  fx.charge-=dt;
+  const progress=1-Math.max(0,fx.charge)/(fx.phase?1.2:1.7);
+  fx.ring.material.opacity=.4+.4*Math.sin(nowT*12)**2;
+  fx.disc.material.opacity=.08+progress*.23;
+  fx.ring.scale.setScalar(.8+progress*.2);
+  if(fx.charge<=0){
+   fx.ring.material.opacity=0;fx.disc.material.opacity=0;
+   const distance=Math.hypot(m.position.x-player.position.x,m.position.z-player.position.z);
+   if(distance<3.7&&invuln<=0&&state.hp>0){
+    const damage=Math.max(3,Math.ceil(e.atk*(fx.phase?1.65:1.2)-def()*.55));
+    state.hp=Math.max(0,state.hp-(shieldTime>0?Math.ceil(damage*.4):damage));
+    particles(player.position.x,player.position.z,fx.color);
+    log('首領範圍靈術命中！氣血 -'+damage);
+    if(state.hp<=0){const cost=Math.min(20,Math.floor(state.stones*.05));state.stones-=cost;state.hp=Math.ceil(maxHp()*.5);state.mp=Math.ceil(maxMp()*.5);log('戰敗返回主城，損失 '+cost+' 靈石。');changeZone('city');}
+    refresh();
+   }else if(distance>=3.7){log('成功閃避首領範圍靈術！');}
+   fx.clock=fx.phase?3.8:5.5;
+  }
+  return true;
+ }
+ fx.clock-=dt;
+ if(fx.clock<=0&&d<11){fx.charge=fx.phase?1.2:1.7;fx.ring.material.opacity=.65;fx.disc.material.opacity=.12;log('⚠ 首領開始蓄力！離開地面警示圈！');return true;}
+ return false;
+}
+// 突破演出僅是視覺效果，不影響原有突破成功率或資源消耗。
+function v420BreakthroughVisual(success){
+ let layer=document.getElementById('v420-breakthrough');
+ if(!layer){layer=document.createElement('div');layer.id='v420-breakthrough';layer.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .45s;background:radial-gradient(circle,rgba(255,219,128,.24),transparent 64%)';
+  layer.innerHTML='<div id="v420-breakthrough-label" style="font-size:clamp(28px,5vw,64px);font-weight:900;color:#ffe5a1;text-shadow:0 0 16px #ffc55a,0 0 42px #fff;letter-spacing:.25em"></div>';
+  document.body.appendChild(layer);}
+ const label=layer.querySelector('#v420-breakthrough-label');label.textContent=success?'破境成功 · 仙途再進':'突破未成 · 靜心再修';
+ layer.style.background=success?'radial-gradient(circle,rgba(255,219,128,.35),transparent 64%)':'radial-gradient(circle,rgba(122,169,221,.28),transparent 64%)';
+ layer.style.opacity='1';clearTimeout(layer._hide);layer._hide=setTimeout(()=>layer.style.opacity='0',1600);
+}
+function update(dt){nowT+=dt;v430ScaleDungeonEnemies();updateCompanions310(dt);v340RiderPose(dt);v340PetFollow(dt);v330Creatures();v350CreatureDetail();v360Creatures(dt);v380BossEffects(dt);v390BossAnimation(dt);updateBossArts320(dt);if(window.TaichuWorld198)TaichuWorld198.update(activeZone,dt);if(window.TaichuWorld199)TaichuWorld199.update(activeZone,dt);if(window.TaichuWorld200)TaichuWorld200.update(activeZone,dt);if(window.TaichuWorld201)TaichuWorld201.update(activeZone,dt);if(window.TaichuWorld300)TaichuWorld300.update(activeZone,dt);if(activeZone==='city'&&window.TaichuCity191)TaichuCity191.update(nowT);if(activeZone==='city'&&window.TaichuCity195)TaichuCity195.update(nowT);if(activeZone==='city'&&window.TaichuCity196)TaichuCity196.update(dt,renderer);updateStarField(dt);animateSky(dt);if(state.hp>0){state.hp=Math.min(maxHp(),state.hp+dt*(activeZone==='city'?2.6:.28));state.mp=Math.min(maxMp(),state.mp+dt*(activeZone==='city'?4.2:1.6))}attCd=Math.max(0,attCd-dt);dashCd=Math.max(0,dashCd-dt);dashTime=Math.max(0,dashTime-dt);invuln=Math.max(0,invuln-dt);shieldTime=Math.max(0,shieldTime-dt);speedBuff=Math.max(0,speedBuff-dt);attackSwing=Math.max(0,attackSwing-dt);for(const k in state.skillCd)state.skillCd[k]=Math.max(0,state.skillCd[k]-dt);
+const oldX=player.position.x,oldZ=player.position.z;if(!dialog){let fw=(keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0),side=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);if(fw||side||dashTime>0){if(!fw&&!side)fw=1;const len=Math.hypot(fw,side);const fx=-Math.sin(camYaw),fz=-Math.cos(camYaw),rx=Math.cos(camYaw),rz=-Math.sin(camYaw);const dx=(fx*fw+rx*side)/len,dz=(fz*fw+rz*side)/len;const s=dashTime>0?17:(speedBuff>0?8:5.8)*(state.mount310?.active?1.5:1);safeMove(player,dx*s*dt,dz*s*dt);player.rotation.y=Math.atan2(dx,dz)}}const moved=Math.hypot(player.position.x-oldX,player.position.z-oldZ);const moving=moved>0.0001;walkBlend=THREE.MathUtils.lerp(walkBlend,moving?1:0,Math.min(1,dt*11));if(moving)walkCycle+=moved*2.9;for(const arm of playerArms){
+ const riding=!!state.mount310?.active;
+ // While riding, hands remain forward near the reins; on foot restore walking swing.
+ const x=riding?-.72:Math.sin(walkCycle)*.52*walkBlend*arm.side;
+ const z=riding?-arm.side*.22:0;
+ arm.group.rotation.x=THREE.MathUtils.lerp(arm.group.rotation.x,x,Math.min(1,dt*12));
+ arm.group.rotation.z=THREE.MathUtils.lerp(arm.group.rotation.z,z,Math.min(1,dt*12));
+}v400MountMotion(dt,moved);if(playerWeapon)playerWeapon.rotation.z=-attackSwing*5;if(playerAura)playerAura.rotation.z+=dt*.7;
 near=null;let mind=3.5;for(const i of interactables){let d=Math.hypot(i.x-player.position.x,i.z-player.position.z);if(d<mind){mind=d;near=i}}for(const d of drops){const distance=Math.hypot(d.x-player.position.x,d.z-player.position.z);if(distance<mind){mind=distance;near={name:`拾取${d.type} ×${d.n}`,fn:()=>{if(d.type==='靈石')state.stones+=d.n;else if(d.type==='靈草')state.herbs+=d.n;else state.materials[d.type]=(state.materials[d.type]||0)+d.n;world.remove(d.obj);drops=drops.filter(a=>a!==d);log('拾取 '+d.type+' ×'+d.n);save();refresh()}}}$('prompt').style.display=near&&!dialog?'block':'none';$('prompt').textContent=near?`E · ${near.name}`:'';
-if(activeZone==='forest'&&!dialog){for(const e of enemies){if(!e.active){if(nowT>e.respawnAt&&enemies.filter(a=>a.active&&a.region===e.region).length<e.region.count){e.respawnAt=Infinity;spawnEnemy(e.region);e.removePending=true}continue}const m=e.mesh,d=Math.hypot(m.position.x-player.position.x,m.position.z-player.position.z);e.attackCd=Math.max(0,e.attackCd-dt);e.slowed=Math.max(0,e.slowed-dt);e.phase+=dt*2;m.position.y=Math.sin(e.phase)*.055;if(d<14&&d>1.9){let vx=(player.position.x-m.position.x)/d,vz=(player.position.z-m.position.z)/d;const step=(e.slowed?0:1.4+e.level*.25)*dt;const tx=m.position.x+vx*step,tz=m.position.z+vz*step;if(isFree(tx,tz,.6))m.position.set(tx,m.position.y,tz);m.rotation.y=Math.atan2(vx,vz)}if(d<2.3&&e.attackCd<=0){e.attackCd=1.65;if(invuln<=0){const damage=Math.max(2,Math.ceil(e.atk*1.25-def()*.65));state.hp=Math.max(0,state.hp-(shieldTime>0?Math.ceil(damage*.4):damage));particles(player.position.x,player.position.z,0xf3987c);if(state.hp<=0){const cost=Math.min(20,Math.floor(state.stones*.05));state.stones-=cost;state.hp=Math.ceil(maxHp()*.5);state.mp=Math.ceil(maxMp()*.5);log(`你戰敗返回主城，損失 ${cost} 靈石。`);changeZone('city');break}refresh()}}}}}
+if(activeZone==='forest'&&!dialog){for(const e of enemies){if(!e.active){if(nowT>e.respawnAt&&enemies.filter(a=>a.active&&a.region===e.region).length<e.region.count){e.respawnAt=Infinity;spawnEnemy(e.region);e.removePending=true}continue}const m=e.mesh,d=Math.hypot(m.position.x-player.position.x,m.position.z-player.position.z);e.attackCd=Math.max(0,e.attackCd-dt);e.slowed=Math.max(0,e.slowed-dt);e.phase+=dt*2;m.position.y=Math.sin(e.phase)*.055;const v420Charging=v420BossSkill(e,dt,d);if(d<14&&d>1.9){let vx=(player.position.x-m.position.x)/d,vz=(player.position.z-m.position.z)/d;const step=(e.slowed?0:1.4+e.level*.25)*dt;const tx=m.position.x+vx*step,tz=m.position.z+vz*step;if(isFree(tx,tz,.6))m.position.set(tx,m.position.y,tz);m.rotation.y=Math.atan2(vx,vz)}if(d<2.3&&e.attackCd<=0&&!v420Charging){e.attackCd=1.65;if(invuln<=0){const damage=Math.max(2,Math.ceil(e.atk*1.25-def()*.65));state.hp=Math.max(0,state.hp-(shieldTime>0?Math.ceil(damage*.4):damage));particles(player.position.x,player.position.z,0xf3987c);if(state.hp<=0){const cost=Math.min(20,Math.floor(state.stones*.05));state.stones-=cost;state.hp=Math.ceil(maxHp()*.5);state.mp=Math.ceil(maxMp()*.5);log(`你戰敗返回主城，損失 ${cost} 靈石。`);changeZone('city');break}refresh()}}}}}
 if((activeZone==='valley'||activeZone==='dungeon'||expansionData[activeZone])&&!dialog)updateValleyEnemies(dt);enemies=enemies.filter(e=>!e.removePending);for(let i=effects.length-1;i>=0;i--){const p=effects[i];p.life-=dt;p.p.position.x+=p.vx*dt;p.p.position.z+=p.vz*dt;p.p.position.y+=p.vy*dt;p.p.scale.setScalar(Math.max(.01,p.life));if(p.life<=0){scene.remove(p.p);p.p.geometry.dispose();p.p.material.dispose();effects.splice(i,1)}}for(let i=drops.length-1;i>=0;i--)if(nowT>drops[i].expires){world.remove(drops[i].obj);drops.splice(i,1)}
 const target=new THREE.Vector3(player.position.x,1.3,player.position.z);smoothTarget.lerp(target,Math.min(1,dt*7));const horiz=camDist*Math.cos(camPitch);camera.position.set(smoothTarget.x+Math.sin(camYaw)*horiz,smoothTarget.y+Math.sin(camPitch)*camDist,smoothTarget.z+Math.cos(camYaw)*horiz);camera.lookAt(smoothTarget);refreshTimer+=dt;saveTimer+=dt;if(refreshTimer>1){refreshTimer=0;refresh();for(let i=0;i<4;i++){const k=state.equipped[i],cd=state.skillCd[k]||0;$('skill'+(i+1)).disabled=!!dialog||cd>0||state.mp<(techs[k]?.mp||0);$('skill'+(i+1)).textContent=cd>0?`${i+1} · ${techs[k].name} ${Math.ceil(cd)}s`:`${i+1} · ${techs[k].name}`}}if(saveTimer>10){saveTimer=0;state.position={x:player.position.x,z:player.position.z};save()}}
-function frame(t){const dt=Math.min(.05,(t-last)/1000||.016);last=t;update(dt);renderer.render(scene,camera);updateLabels();requestAnimationFrame(frame)}resumeSaved();log('點選右下角「開啟仙境音樂」，主城與青木林會播放不同旋律。');log('《太初仙域》V1.7 三界開拓已啟動：赤焰荒原、玄冰雪域、九霄仙境、Lv.20 與 +10 裝備強化！');requestAnimationFrame(frame);
+function frame(t){const dt=Math.min(.05,(t-last)/1000||.016);last=t;update(dt);renderer.render(scene,camera);updateLabels();requestAnimationFrame(frame)}
+// V3.1.0 - 具區域辨識度的地面、戰鬥特效、坐騎與拾取靈寵
+let mountMesh310=null,petMesh310=null,petPickupTimer310=0;
+function combatBurst310(x,z,color){
+ if(!world||!player)return;
+ const ring=new THREE.Mesh(new THREE.RingGeometry(.25,.55,24),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.72,side:THREE.DoubleSide,depthWrite:false}));
+ ring.rotation.x=-Math.PI/2;ring.position.set(x,.16,z);scene.add(ring);
+ effects.push({p:ring,life:.32,vx:0,vz:0,vy:.18});
+ for(let i=0;i<5;i++){const a=i*Math.PI*2/5;const spark=new THREE.Mesh(new THREE.OctahedronGeometry(.08,0),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.85}));spark.position.set(x,.65,z);scene.add(spark);effects.push({p:spark,life:.4,vx:Math.cos(a)*2.6,vz:Math.sin(a)*2.6,vy:1.1})}
+}
+function decorateTerrain310(zone){
+ // Seven region-specific surfaces: organic forest trails, concentric plaza, broken stone,
+ // rune slabs, cracked lava, snowdrifts and cloud-islands. Keep central path navigable.
+ const seed={city:11,forest:29,valley:43,dungeon:59,firelands:71,snowlands:83,skylands:97}[zone]||11;
+ let n=seed;const rnd=()=>{n=(Math.imul(n,1664525)+1013904223)>>>0;return n/4294967296};
+ const cfg={city:[0x9c9376,0xc5b78d],forest:[0x3e7350,0x7f9b62],valley:[0x598a7b,0x9ebcaf],dungeon:[0x485d62,0x82aaa6],firelands:[0x58362f,0xc15a37],snowlands:[0xa8cad8,0xe4f4f8],skylands:[0x819c89,0xd5cfa8]}[zone]||[0x647e68,0xb7aa85];
+ const group=new THREE.Group();group.name='V310_Terrain';world.add(group);
+ const geo=zone==='forest'?new THREE.CircleGeometry(1,7):zone==='snowlands'?new THREE.IcosahedronGeometry(1,0):zone==='firelands'?new THREE.PlaneGeometry(1,1):zone==='skylands'?new THREE.CircleGeometry(1,8):new THREE.PlaneGeometry(1,1);
+ const count=zone==='city'?140:220;const dummy=new THREE.Object3D();
+ for(let tone=0;tone<2;tone++){
+ const mesh=new THREE.InstancedMesh(geo,new THREE.MeshStandardMaterial({color:cfg[tone],roughness:.95,side:THREE.DoubleSide,transparent:true,opacity:zone==='snowlands'?.82:.74,depthWrite:false}),Math.ceil(count/2));let k=0;
+ for(let i=tone;i<count;i+=2){let x=(rnd()-.5)*86,z=(rnd()-.5)*86;
+ if(zone==='city'&&Math.abs(x)<15&&Math.abs(z)<17){x+=x<0?-16:16}
+ if(zone==='dungeon'&&Math.abs(x)<8) x+=x<0?-9:9;
+ const a=rnd()*Math.PI*2,w=.55+rnd()*(zone==='snowlands'?2.8:zone==='forest'?1.6:2.2);
+ dummy.position.set(x,zone==='snowlands'?.055:.035,z);dummy.rotation.set(-Math.PI/2,0,a);dummy.scale.set(w,zone==='forest'?w*.6:w*(.4+rnd()*.6),zone==='snowlands'?.11:1);dummy.updateMatrix();mesh.setMatrixAt(k++,dummy.matrix)}
+ mesh.count=k;mesh.instanceMatrix.needsUpdate=true;mesh.frustumCulled=false;group.add(mesh)
+ }
+ // Path visual: irregular narrow tracks instead of identical three-tile rows.
+ if(zone==='forest'||zone==='valley'||zone==='firelands'||zone==='snowlands'){
+ const pathColor={forest:0x756e50,valley:0x8da69a,firelands:0x49302a,snowlands:0xc3e1e9}[zone];
+ const pathMat=new THREE.MeshStandardMaterial({color:pathColor,roughness:1,transparent:true,opacity:.82,side:THREE.DoubleSide});
+ for(let j=-17;j<=17;j++){const z=j*2.3,x=Math.sin(j*.43)*1.5;const slab=new THREE.Mesh(new THREE.CircleGeometry(1,7),pathMat);slab.rotation.x=-Math.PI/2;slab.rotation.z=j*.4;slab.scale.set(2.1+rnd()*.7,1.2+rnd()*.4,1);slab.position.set(x,.05,z);group.add(slab)}
+ }
+}
+function companion310(kind){const g=new THREE.Group();const body=new THREE.Mesh(new THREE.SphereGeometry(kind==='mount'?.72:.35,10,8),new THREE.MeshStandardMaterial({color:kind==='mount'?0x8c6949:0xf4c88c,roughness:.88}));body.scale.set(1,kind==='mount'?.75:.85,kind==='mount'?1.55:1.25);body.position.y=kind==='mount'?.92:.42;g.add(body);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(kind==='mount'?.42:.27,10,8),new THREE.MeshStandardMaterial({color:kind==='mount'?0x9c7954:0xf8dbab}));head.position.set(0,kind==='mount'?1.32:.67,kind==='mount'?.82:.27);g.add(head);
+ for(const side of [-1,1]){const ear=new THREE.Mesh(new THREE.ConeGeometry(kind==='mount'?.14:.13,kind==='mount'?.35:.38,5),new THREE.MeshStandardMaterial({color:kind==='mount'?0x674d3e:0xe8a76e}));ear.position.set(side*(kind==='mount'?.24:.18),kind==='mount'?1.68:1,.9*(kind==='mount'?1:.4));g.add(ear)}
+ for(const side of [-1,1]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.055,6,6),new THREE.MeshBasicMaterial({color:0x1e2827}));eye.position.set(side*.17,kind==='mount'?1.36:.7,kind==='mount'?1.19:.51);g.add(eye)}
+ if(kind==='mount')for(const x of [-.43,.43])for(const z of [-.6,.6]){const leg=new THREE.Mesh(new THREE.CylinderGeometry(.12,.13,.85,6),new THREE.MeshStandardMaterial({color:0x71553f}));leg.position.set(x,.4,z);g.add(leg)}
+ return g}
+window.toggleMount310=()=>{state.mount310=state.mount310||{owned:true,active:false};state.mount310.active=!state.mount310.active;log(state.mount310.active?'已召喚靈駒，移動速度 +50%。':'已收回靈駒。');save();};
+window.togglePet310=()=>{state.pet310=state.pet310||{owned:false,active:false};if(!state.pet310.owned){log('尚未獲得靈狐。擊敗妖獸有極低機率掉落寵物契約。');return}state.pet310.active=!state.pet310.active;log(state.pet310.active?'靈狐已出戰：自動拾取附近掉落物。':'靈狐已收回。');save()};
+function collectPetDrop310(d){if(d.type==='靈石')state.stones+=d.n;else if(d.type==='靈草')state.herbs+=d.n;else state.materials[d.type]=(state.materials[d.type]||0)+d.n;world.remove(d.obj);drops=drops.filter(a=>a!==d);log('靈狐拾取 '+d.type+' ×'+d.n);save();refresh()}
+function updateCompanions310(dt){
+ if(!state.mount310)state.mount310={owned:true,active:false};if(!state.pet310)state.pet310={owned:false,active:false};
+ if(!mountMesh310){mountMesh310=companion310('mount');scene.add(mountMesh310)}if(!petMesh310){petMesh310=companion310('pet');scene.add(petMesh310)}
+ mountMesh310.visible=!!state.mount310.active;petMesh310.visible=!!(state.pet310.owned&&state.pet310.active);
+ if(mountMesh310.visible){mountMesh310.position.copy(player.position);mountMesh310.rotation.y=player.rotation.y;mountMesh310.position.y=-.1}
+ if(petMesh310.visible){const x=player.position.x+Math.sin(nowT*.7)*1.65,z=player.position.z+Math.cos(nowT*.7)*1.65;petMesh310.position.lerp(new THREE.Vector3(x,.12+Math.sin(nowT*3)*.07,z),Math.min(1,dt*5));petPickupTimer310-=dt;
+ if(petPickupTimer310<=0&&!dialog){petPickupTimer310=.35;const d=drops.find(d=>Math.hypot(d.x-petMesh310.position.x,d.z-petMesh310.position.z)<4.5);if(d)collectPetDrop310(d)}}
+}
+
+
+// V3.2.0 九宮格區域地圖：地理配置是遊戲世界的示意位置，非傳送功能。
+const worldCells320=[
+ ['snowlands','❄️','玄冰雪域','極寒冰川'],['skylands','☁️','九霄仙境','天外仙宮'],[null,'✦','未開放','未知仙域'],
+ ['valley','🌫️','靈霧山谷','霧谷晶溪'],['dungeon','🔮','靈霧秘境','古老遺跡'],['firelands','🔥','赤焰荒原','熔岩之地'],
+ [null,'✦','未開放','未知仙域'],['forest','🌲','青木林','林海試煉'],['city','🏯','太初仙城','修仙主城']
+];
+function renderWorldMap320(){const here=worldCells320.find(c=>c[0]===activeZone);return `<div class="realm-map320"><p class="realm-location320">📍 目前所在：<b>${here?here[2]:zoneNames[activeZone]||'未知地區'}</b></p><p class="realm-hint320">九宮格世界總覽 · 發光框與「你在這裡」表示目前地區；此圖僅供定位，不會直接傳送。</p><div class="realm-grid320">${worldCells320.map(([id,icon,name,desc])=>`<div class="realm-cell320 ${id===activeZone?'realm-here320':''} ${!id?'realm-unknown320':''}" aria-label="${name}${id===activeZone?'，你目前的位置':''}"><span class="realm-symbol320">${icon}</span><b>${name}</b><small>${desc}</small>${id===activeZone?'<strong class="realm-marker320">● 你在這裡</strong>':id&&state.level<(zoneLevel[id]||1)?`<span class="realm-locked320">Lv.${zoneLevel[id]} 解鎖</span>`:''}</div>`).join('')}</div><p class="realm-hint320">提示：按 M 開啟地圖、Esc 關閉；移動至傳送陣並按 E 前往其他區域。</p></div>`}
+// V3.2.0 不規則地貌：替代先前一排排相同磁磚。所有裝飾均不參與碰撞。
+function decorateTerrain320(zone){const cfg={city:[0x7f8170,0x9d9a7c,'stone'],forest:[0x3b7651,0x6b945b,'leaves'],valley:[0x4b897e,0x8db5a7,'pebbles'],dungeon:[0x3c585a,0x79918e,'runes'],firelands:[0x4d2927,0xa44d2e,'cracks'],snowlands:[0x96bacb,0xd6e8ee,'snow'],skylands:[0x8eaa95,0xd5c8a2,'cloud']}[zone];if(!cfg)return;
+ const g=new THREE.Group();g.name='V320_unique_terrain';world.add(g);let seed=4217+Object.keys(zoneNames).indexOf(zone)*271;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
+ const count=zone==='city'?90:zone==='dungeon'?125:210;const geo=cfg[2]==='pebbles'?new THREE.IcosahedronGeometry(1,0):cfg[2]==='snow'?new THREE.SphereGeometry(1,7,4):cfg[2]==='leaves'?new THREE.CircleGeometry(1,5):cfg[2]==='runes'?new THREE.RingGeometry(.65,1,6):cfg[2]==='cracks'?new THREE.PlaneGeometry(1,1):new THREE.CircleGeometry(1,7);
+ for(let tone=0;tone<2;tone++){const m=new THREE.InstancedMesh(geo,new THREE.MeshStandardMaterial({color:cfg[tone],roughness:.95,side:THREE.DoubleSide,transparent:true,opacity:.78,depthWrite:false}),Math.ceil(count/2));const o=new THREE.Object3D();let n=0;for(let i=tone;i<count;i+=2){let x=(rnd()-.5)*92,z=(rnd()-.5)*92;if(Math.abs(x)<(zone==='city'?17:zone==='dungeon'?11:7))x+=(x<0?-1:1)*12;if(zone==='city'&&Math.abs(z)<17&&Math.abs(x)<22)continue;const a=rnd()*6.28,w=.45+rnd()*2.2;o.position.set(x,.028+(cfg[2]==='pebbles'?.04:0),z);o.rotation.set(-Math.PI/2,0,a);o.scale.set(w,cfg[2]==='cracks'?w*.12:w*(.4+rnd()*.6),cfg[2]==='snow'?.09:1);o.updateMatrix();m.setMatrixAt(n++,o.matrix)}m.count=n;m.instanceMatrix.needsUpdate=true;m.frustumCulled=false;g.add(m)}
+ // 非對稱自然路徑：不再使用規律的三塊磁磚列
+ if(['forest','valley','firelands','snowlands'].includes(zone)){const color={forest:0x796b4c,valley:0x91a89b,firelands:0x52302a,snowlands:0xc5e0e8}[zone];const mat=new THREE.MeshStandardMaterial({color,roughness:1,side:THREE.DoubleSide,transparent:true,opacity:.7});for(let i=0;i<30;i++){const z=-40+i*2.7,x=Math.sin(i*.37)*1.4+(rnd()-.5)*.8;const patch=new THREE.Mesh(new THREE.CircleGeometry(1,6),mat);patch.rotation.x=-Math.PI/2;patch.rotation.z=rnd()*3;patch.position.set(x,.046,z);patch.scale.set(1.5+rnd()*1.4,.55+rnd()*.7,1);g.add(patch)}}
+}
+// V3.2.0 讓每個 Boss 具有辨識度：依區域給予不同頭冠、角、翼、法環。
+function updateBossArts320(dt){for(const e of enemies){if(!e.active||!e.boss||!e.mesh)continue;if(!e.mesh.userData.v320Boss){const g=new THREE.Group();g.name='V320_Boss_Identity';const c={forest:0x8fe3a5,valley:0x9ce5d8,dungeon:0x81f0ef,firelands:0xff7745,snowlands:0x9cdbff,skylands:0xffe6a1}[activeZone]||0xe8d49c;const gem=new THREE.Mesh(new THREE.OctahedronGeometry(.48),new THREE.MeshStandardMaterial({color:c,emissive:c,emissiveIntensity:.45,metalness:.45,roughness:.28}));gem.position.y=3.3;g.add(gem);if(activeZone==='firelands'||activeZone==='snowlands'){for(const side of [-1,1]){const horn=new THREE.Mesh(new THREE.ConeGeometry(.22,1.3,6),new THREE.MeshStandardMaterial({color:c,roughness:.4}));horn.position.set(side*.85,2.7,0);horn.rotation.z=side*.4;g.add(horn)}}else if(activeZone==='skylands'){for(const side of [-1,1]){const wing=new THREE.Mesh(new THREE.ConeGeometry(.42,2.1,5),new THREE.MeshStandardMaterial({color:c,side:THREE.DoubleSide}));wing.position.set(side*1.35,1.9,-.15);wing.rotation.z=side*.95;g.add(wing)}}else{const ring=new THREE.Mesh(new THREE.TorusGeometry(1.2,.08,7,26),new THREE.MeshStandardMaterial({color:c,emissive:c,emissiveIntensity:.3}));ring.position.y=2.5;ring.rotation.x=.5;g.add(ring)}e.mesh.add(g);e.mesh.userData.v320Boss=g}e.mesh.userData.v320Boss.rotation.y+=dt*.55}}
+
+
+// V3.3.0: world-floor replacement, distinctive regional landmarks, creature silhouettes,
+// rider alignment and QA pet grant. All scenery is decorative and non-colliding.
+const V330_COLORS={
+ city:[0x8a927e,0xadb29e,0xd8c8a6,0xb0d4d0],
+ forest:[0x355e3f,0x4d8350,0x729b5c,0xa8c57e],
+ valley:[0x3d776d,0x65a396,0x91c6ad,0x98e4dc],
+ dungeon:[0x33434a,0x54656a,0x728a86,0x85ddd6],
+ firelands:[0x402927,0x683b32,0x994c32,0xf48d4b],
+ snowlands:[0x7fabbc,0xb4d3dd,0xe3f0ef,0xa6eaff],
+ skylands:[0x6b9386,0x94b7a1,0xd5d5b1,0xffe2a5]
+};
+function v330Random(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}}
+function v330Mesh(geo,color){return new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color,roughness:.89,metalness:.04,side:THREE.DoubleSide}))}
+function v330Scatter(group,geo,color,items){const mesh=new THREE.InstancedMesh(geo,new THREE.MeshStandardMaterial({color,roughness:.91,side:THREE.DoubleSide}),items.length);const dummy=new THREE.Object3D();items.forEach((p,i)=>{dummy.position.set(p[0],p[1],p[2]);dummy.rotation.set(p[3]||0,p[4]||0,p[5]||0);dummy.scale.set(p[6]||1,p[7]||1,p[8]||1);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix)});mesh.instanceMatrix.needsUpdate=true;mesh.frustumCulled=false;group.add(mesh)}
+function v330BuildGround(zone){
+ const old=world.getObjectByName('V330_Floor');if(old)return;
+ const colors=V330_COLORS[zone]||V330_COLORS.city;
+ // Replace prior decorative patches instead of endlessly layering repeated tiles.
+ for(const name of ['V310_Terrain','V320_unique_terrain','V201_Terrain','V198_'+zone]){
+  const o=world.getObjectByName(name);if(o)o.visible=false;
+ }
+ // Remove only broad, flat horizontal ground/path meshes. Preserve pools and small props.
+ world.children.forEach(o=>{if(!o.isMesh||!o.geometry||!o.geometry.parameters)return;
+ const p=o.geometry.parameters;if(o.geometry.type!=='PlaneGeometry'||(p.width||0)<11||(p.height||0)<70)return;
+ if(Math.abs(o.rotation.x+Math.PI/2)<.03&&o.position.y<.06)o.visible=false;
+ });
+ const g=new THREE.Group();g.name='V330_Floor';world.add(g);
+ const width=(zone==='valley'||zone==='firelands'||zone==='snowlands'||zone==='skylands')?110:95;
+ const floor=v330Mesh(new THREE.PlaneGeometry(width,width,1,1),colors[0]);floor.rotation.x=-Math.PI/2;floor.position.y=-.035;g.add(floor);
+ const r=v330Random(330+Object.keys(V330_COLORS).indexOf(zone)*617);
+ // Distinct silhouettes: curving woodland footpath, braided valley trail, hex ruins,
+ // basalt fault line, snow banks, cloud discs, and concentric stone plazas.
+ if(zone==='city'){
+  const circle=v330Mesh(new THREE.CylinderGeometry(12,12,.08,64),colors[1]);circle.position.set(0,.005,8);g.add(circle);
+  const ring=v330Mesh(new THREE.RingGeometry(9.5,11.6,64),colors[2]);ring.rotation.x=-Math.PI/2;ring.position.set(0,.061,8);g.add(ring);
+  for(let z=-44;z<46;z+=5.5){const slab=v330Mesh(new THREE.BoxGeometry(11,.055,4.7),z%2?colors[1]:colors[2]);slab.position.set(0,.018,z);g.add(slab)}
+ }else if(zone==='forest'){
+  for(let z=-48;z<=48;z+=2.6){const x=Math.sin(z*.10)*2.4;const p=v330Mesh(new THREE.CircleGeometry(3.8,9),colors[2]);p.rotation.x=-Math.PI/2;p.position.set(x,.01,z);p.scale.set(1,.8,1);g.add(p)}
+ }else if(zone==='valley'){
+  for(let z=-50;z<50;z+=3.5)for(const side of [-1,1]){const x=side*2+Math.sin(z*.13+side)*1.2;const p=v330Mesh(new THREE.CircleGeometry(2.7,7),colors[1]);p.rotation.x=-Math.PI/2;p.position.set(x,.009,z);g.add(p)}
+ }else if(zone==='dungeon'){
+  for(let z=-44;z<=44;z+=5.2){const p=v330Mesh(new THREE.CylinderGeometry(5.8,5.8,.055,6),colors[1]);p.position.set(0,.015,z);p.rotation.y=z*.07;g.add(p)}
+ }else if(zone==='firelands'){
+  for(let z=-50;z<=50;z+=3.3){const x=Math.sin(z*.17)*1.3;const p=v330Mesh(new THREE.BoxGeometry(11,.06,2.4),colors[1]);p.position.set(x,.016,z);p.rotation.y=Math.sin(z*.33)*.11;g.add(p)}
+ }else if(zone==='snowlands'){
+  for(let z=-50;z<=50;z+=3.1){const p=v330Mesh(new THREE.SphereGeometry(1,9,5),colors[2]);p.position.set(Math.sin(z*.12)*1.2,-.38,z);p.scale.set(6.2,.45,2.6);g.add(p)}
+ }else{
+  for(let z=-50;z<=50;z+=5){const p=v330Mesh(new THREE.CircleGeometry(5.5,12),colors[2]);p.rotation.x=-Math.PI/2;p.position.set(Math.sin(z*.11)*1.6,.015,z);g.add(p)}
+ }
+ const patches=[],pebbles=[],tufts=[];
+ for(let i=0;i<360;i++){const x=(r()-.5)*(width-8),z=(r()-.5)*(width-8);
+ if(Math.abs(x)<9 || (zone==='city'&&Math.hypot(x,z-8)<17))continue;
+ patches.push([x,.006,z,-Math.PI/2,r()*6.28,0,.7+r()*2.4,.5+r()*1.7,1]);
+ if(i%3===0)pebbles.push([x,.15,z,0,r()*6.28,0,.15+r()*.55,.17+r()*.24,.2+r()*.6]);
+ if(i%4===0)tufts.push([x,.24,z,0,r()*6.28,0,.16+r()*.4,.32+r()*.4,.16+r()*.4]);
+ }
+ const patchGeo=zone==='firelands'?new THREE.PlaneGeometry(1,1):zone==='snowlands'?new THREE.CircleGeometry(1,8):zone==='dungeon'?new THREE.RingGeometry(.5,1,6):new THREE.CircleGeometry(1,zone==='forest'?6:9);
+ v330Scatter(g,patchGeo,colors[1],patches);
+ v330Scatter(g,new THREE.DodecahedronGeometry(1,0),colors[2],pebbles);
+ if(zone!=='city')v330Scatter(g,zone==='snowlands'?new THREE.IcosahedronGeometry(1,0):new THREE.ConeGeometry(1,1,5),colors[3],tufts);
+ // Every wilderness map gets substantial, themed monuments rather than generic tile rows.
+ const structures=new THREE.Group();structures.name='V330_Regional_Architecture';g.add(structures);
+ const sites=[[-30,-27],[29,-27],[-31,25],[30,26]];
+ for(let k=0;k<sites.length;k++){
+  const [x,z]=sites[k],mon=new THREE.Group();mon.position.set(x,0,z);structures.add(mon);
+  const base=v330Mesh(new THREE.CylinderGeometry(3.1,3.7,.55,zone==='dungeon'?6:8),colors[1]);base.position.y=.26;mon.add(base);
+  if(zone==='forest'){for(let j=0;j<5;j++){const a=j*6.28/5;const trunk=v330Mesh(new THREE.CylinderGeometry(.28,.48,4.5,7),0x66533d);trunk.position.set(Math.sin(a)*1.2,2.7,Math.cos(a)*1.2);mon.add(trunk);const crown=v330Mesh(new THREE.IcosahedronGeometry(1.65,1),j%2?0x468c60:0x80b66b);crown.position.set(Math.sin(a)*1.2,5.2,Math.cos(a)*1.2);mon.add(crown)}}
+  else if(zone==='firelands'||zone==='snowlands'){for(let j=0;j<6;j++){const a=j*6.28/6;const h=3+r()*4;const crystal=v330Mesh(new THREE.ConeGeometry(.55+r()*.4,h,5),j%2?colors[2]:colors[3]);crystal.position.set(Math.cos(a)*1.45,h/2+.45,Math.sin(a)*1.45);crystal.rotation.z=(r()-.5)*.3;mon.add(crystal)}}
+  else if(zone==='skylands'){for(let j=0;j<4;j++){const col=v330Mesh(new THREE.CylinderGeometry(.22,.32,5.2,8),colors[2]);col.position.set(j<2?-1.8:1.8,2.8,j%2?-1.7:1.7);mon.add(col)}const roof=v330Mesh(new THREE.ConeGeometry(3.6,2.5,8),colors[3]);roof.position.y=6.5;mon.add(roof)}
+  else{for(let j=0;j<6;j++){const a=j*6.28/6;const col=v330Mesh(new THREE.CylinderGeometry(.32,.48,4.5,6),colors[2]);col.position.set(Math.cos(a)*2,2.7,Math.sin(a)*2);mon.add(col)}const roof=v330Mesh(new THREE.ConeGeometry(3.5,2,zone==='dungeon'?6:8),colors[3]);roof.position.y=5.8;mon.add(roof)}
+  const crown=v330Mesh(new THREE.OctahedronGeometry(.85,0),colors[3]);crown.position.y=7.6;mon.add(crown);
+ }
+}
+function v330Creatures(){
+ for(const e of enemies){if(!e.mesh||e.mesh.userData.v330Creature)continue;
+  e.mesh.userData.v330Creature=true;
+  const g=new THREE.Group();g.name='V330_Creature_Details';e.mesh.add(g);
+  const zone=activeZone,color=(V330_COLORS[zone]||V330_COLORS.forest)[3];
+  const boss=!!e.boss,scale=boss?1.55:.75;
+  for(const side of [-1,1]){
+   const horn=v330Mesh(new THREE.ConeGeometry(.17*scale,.85*scale,6),color);
+   horn.position.set(side*.42*scale,1.65*scale,0);horn.rotation.z=side*.42;g.add(horn);
+   const claw=v330Mesh(new THREE.ConeGeometry(.12*scale,.6*scale,5),zone==='firelands'?0xff6b39:0x596d66);
+   claw.position.set(side*.55*scale,.35*scale,.4*scale);claw.rotation.x=Math.PI*.43;g.add(claw);
+  }
+  if(zone==='forest'||zone==='valley'){for(let i=0;i<3;i++){const leaf=v330Mesh(new THREE.ConeGeometry(.2*scale,.7*scale,5),color);leaf.position.set(0,(.9+i*.35)*scale,-.3*scale);leaf.rotation.x=-.5;g.add(leaf)}}
+  if(zone==='snowlands'||zone==='dungeon'){for(let i=0;i<4;i++){const a=i*1.57;const spike=v330Mesh(new THREE.OctahedronGeometry(.33*scale),color);spike.position.set(Math.cos(a)*.65*scale,1.2*scale,Math.sin(a)*.65*scale);g.add(spike)}}
+  if(zone==='firelands'){const tail=v330Mesh(new THREE.ConeGeometry(.3*scale,1.5*scale,5),0xb24a2b);tail.position.set(0,.7*scale,-.85*scale);tail.rotation.x=-1.1;g.add(tail)}
+  if(zone==='skylands'){for(const side of [-1,1]){const wing=v330Mesh(new THREE.ConeGeometry(.55*scale,1.65*scale,4),color);wing.position.set(side*.8*scale,1.2*scale,-.25);wing.rotation.z=side*1.05;g.add(wing)}}
+ }
+}
+function v330RiderAndPet(dt){
+ // Rider is elevated above the horse's back; mount stays at ground level.
+ const riding=!!state.mount310?.active;
+ player.position.y=THREE.MathUtils.lerp(player.position.y,riding?1.35:0,Math.min(1,dt*12));
+ if(mountMesh310&&riding){mountMesh310.position.set(player.position.x,0,player.position.z);mountMesh310.rotation.y=player.rotation.y;}
+ if(petMesh310&&petMesh310.visible){
+  const target=new THREE.Vector3(player.position.x-Math.sin(player.rotation.y)*2.4,.18,player.position.z-Math.cos(player.rotation.y)*2.4);
+  petMesh310.position.lerp(target,Math.min(1,dt*2.8));
+ }
+}
+function v330GiveTestPet(){
+ // Test-build convenience: existing saves get a pet without grinding.
+ if(!state.pet310)state.pet310={owned:false,active:false};
+ if(!state.pet310.owned){
+  state.pet310.owned=true;state.pet310.active=true;
+  // Grant is attached to the save, so new saves also receive the test pet.
+  save();log('V3.3 測試贈禮：已發放靈狐！按 P 可召喚／收回。');
+ }
+}
+
+
+// V3.4: saddle, rider pose and stable companion-following enhancements.
+function v340PolishMount(){
+ if(!mountMesh310||mountMesh310.userData.v340)return;
+ mountMesh310.userData.v340=true;
+ const leather=new THREE.MeshStandardMaterial({color:0x48372f,roughness:.9});
+ const gold=new THREE.MeshStandardMaterial({color:0xc8a15b,metalness:.35,roughness:.52});
+ const saddle=new THREE.Mesh(new THREE.BoxGeometry(.92,.13,.8),leather);
+ saddle.position.set(0,1.06,-.12);mountMesh310.add(saddle);
+ for(const side of [-1,1]){
+  const strap=new THREE.Mesh(new THREE.BoxGeometry(.055,.48,.09),gold);
+  strap.position.set(side*.5,.78,-.14);mountMesh310.add(strap);
+  const stirrup=new THREE.Mesh(new THREE.TorusGeometry(.13,.027,6,12),gold);
+  stirrup.position.set(side*.54,.52,-.13);stirrup.rotation.y=Math.PI/2;mountMesh310.add(stirrup);
+ }
+ const mane=new THREE.Mesh(new THREE.ConeGeometry(.22,.9,6),leather);
+ mane.position.set(0,1.18,.52);mane.rotation.x=-.65;mountMesh310.add(mane);
+}
+function v340RiderPose(dt){
+ if(!mountMesh310)return;
+ v340PolishMount();
+ const riding=!!state.mount310?.active;
+ const target=riding?1.07:0;
+ player.position.y=THREE.MathUtils.lerp(player.position.y,target,Math.min(1,dt*9));
+ // Turn feet outwards when riding and restore when dismounted.
+ for(const child of player.children){
+  if(!child.isMesh||child.geometry?.type!=='BoxGeometry'||Math.abs(child.position.y-.08)>.035)continue;
+  if(Math.abs(child.position.x)>.07&&Math.abs(child.position.x)<.3){
+   child.rotation.z=THREE.MathUtils.lerp(child.rotation.z,riding?(child.position.x>0?-.65:.65):0,Math.min(1,dt*9));
+  }
+ }
+ if(riding){
+  mountMesh310.position.set(player.position.x,-.03,player.position.z);
+  mountMesh310.rotation.y=player.rotation.y;
+ }
+}
+function v340PetFollow(dt){
+ if(!petMesh310?.visible)return;
+ // Pet walks behind and to the side of the rider, not through the mount.
+ const angle=player.rotation.y;
+ const desiredX=player.position.x-Math.sin(angle)*2.6+Math.cos(angle)*1.3;
+ const desiredZ=player.position.z-Math.cos(angle)*2.6-Math.sin(angle)*1.3;
+ const k=Math.min(1,dt*3.3);
+ petMesh310.position.x+=(desiredX-petMesh310.position.x)*k;
+ petMesh310.position.z+=(desiredZ-petMesh310.position.z)*k;
+ petMesh310.position.y=.11+Math.sin(nowT*5)*.035;
+ petMesh310.rotation.y=angle;
+}
+
+
+// V4.1.0: restrained riding arms and a horse that actually moves its limbs.
+let v400GaitPhase=0,v400GaitBlend=0;
+function v400MountMotion(dt,moved){
+ if(!mountMesh310)return;
+ const riding=!!state.mount310?.active;
+ const moving=riding&&moved>.0001;
+ v400GaitBlend=THREE.MathUtils.lerp(v400GaitBlend,moving?1:0,Math.min(1,dt*7));
+ if(moving)v400GaitPhase+=moved*3.8;
+ // Cache parts once. Their materials and meshes remain owned by the mount.
+ if(!mountMesh310.userData.v400){
+  const legs=mountMesh310.children.filter(c=>c.isMesh&&c.geometry?.type==='CylinderGeometry'&&Math.abs(c.position.y-.4)<.06&&Math.abs(c.position.x)>.3);
+  const head=mountMesh310.children.find(c=>c.isMesh&&c.geometry?.type==='SphereGeometry'&&c.position.z>.7&&c.position.y>1.1);
+  const tail=new THREE.Group();tail.position.set(0,1.05,-1.03);
+  const hair=new THREE.Mesh(new THREE.ConeGeometry(.13,.78,7),new THREE.MeshStandardMaterial({color:0x47332a,roughness:.95}));
+  hair.position.set(0,-.36,-.12);hair.rotation.x=-.3;tail.add(hair);mountMesh310.add(tail);
+  const reins=new THREE.Group();const strapMat=new THREE.MeshStandardMaterial({color:0x493329,roughness:.88});
+  for(const side of [-1,1]){
+   const line=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,.93,5),strapMat);
+   line.position.set(side*.23,1.27,.49);line.rotation.x=.55;reins.add(line);
+  }mountMesh310.add(reins);
+  mountMesh310.userData.v400={legs,head,tail};
+ }
+ const rig=mountMesh310.userData.v400;
+ for(const leg of rig.legs){
+  const fore=leg.position.z>0,side=leg.position.x>0;
+  const offset=(fore?(side?0:Math.PI):(side?Math.PI:0));
+  leg.rotation.x=Math.sin(v400GaitPhase+offset)*.46*v400GaitBlend;
+ }
+ if(rig.head){rig.head.rotation.x=Math.sin(v400GaitPhase*2)*.065*v400GaitBlend;}
+ rig.tail.rotation.z=Math.sin(nowT*2.7)*.19;
+ rig.tail.rotation.x=Math.sin(v400GaitPhase)*.13*v400GaitBlend;
+ // Subtle saddle bounce; player remains steady enough to keep hands on reins.
+ if(riding){
+  const desired=1.07+Math.abs(Math.sin(v400GaitPhase*2))*.035*v400GaitBlend;
+  player.position.y=THREE.MathUtils.lerp(player.position.y,desired,Math.min(1,dt*9));
+ }
+}
+
+// V3.5.0: zone-specific architectural ensembles and distinct creature silhouettes.
+function v350Landmarks(zone){
+ if(world.getObjectByName('V350_Landmarks'))return;
+ const palette=V330_COLORS[zone]||V330_COLORS.city;
+ const group=new THREE.Group();group.name='V350_Landmarks';world.add(group);
+ const locations=[[-39,-39],[39,-39],[-39,39],[39,39],[-24,0],[24,0]];
+ const glow=new THREE.MeshStandardMaterial({color:palette[3],emissive:palette[3],emissiveIntensity:.27,roughness:.5});
+ const stone=new THREE.MeshStandardMaterial({color:palette[1],roughness:.9});
+ const accent=new THREE.MeshStandardMaterial({color:palette[2],roughness:.75});
+ const build=(x,z,index)=>{
+  const g=new THREE.Group();g.position.set(x,0,z);group.add(g);
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.8,.55,8),stone);base.position.y=.28;g.add(base);
+  if(zone==='forest'){
+   for(let j=0;j<4;j++){let a=j*Math.PI/2;const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.3,.46,5.2,7),stone);trunk.position.set(Math.cos(a)*1.8,2.9,Math.sin(a)*1.8);g.add(trunk)}
+   for(let level=0;level<3;level++){const crown=new THREE.Mesh(new THREE.ConeGeometry(3.8-level*.6,2.2,8),new THREE.MeshStandardMaterial({color:level%2?0x39764b:0x65a66a}));crown.position.y=5.1+level*1.15;g.add(crown)}
+  }else if(zone==='valley'){
+   for(let j=0;j<6;j++){const a=j*Math.PI/3;const column=new THREE.Mesh(new THREE.CylinderGeometry(.28,.42,5.6,7),accent);column.position.set(Math.cos(a)*2.3,3.05,Math.sin(a)*2.3);g.add(column)}
+   const roof=new THREE.Mesh(new THREE.ConeGeometry(3.9,2.4,8),glow);roof.position.y=6.8;g.add(roof);
+  }else if(zone==='dungeon'){
+   for(let j=0;j<6;j++){const a=j*Math.PI/3;const pillar=new THREE.Mesh(new THREE.BoxGeometry(.75,4.5,.75),stone);pillar.position.set(Math.cos(a)*2.5,2.55,Math.sin(a)*2.5);pillar.rotation.y=a;g.add(pillar)}
+   const ring=new THREE.Mesh(new THREE.TorusGeometry(2.4,.24,8,24),glow);ring.position.y=5.4;ring.rotation.x=.22;g.add(ring);
+  }else if(zone==='firelands'){
+   for(let j=0;j<5;j++){const a=j*Math.PI*2/5;const spike=new THREE.Mesh(new THREE.ConeGeometry(.8,5.3+(j%3),5),j%2?accent:glow);spike.position.set(Math.cos(a)*1.9,3.1+(j%3)*.5,Math.sin(a)*1.9);spike.rotation.z=Math.cos(a)*.22;g.add(spike)}
+  }else if(zone==='snowlands'){
+   for(let j=0;j<7;j++){const a=j*Math.PI*2/7;const crystal=new THREE.Mesh(new THREE.OctahedronGeometry(1.3+(j%3)*.25,0),j%2?accent:glow);crystal.position.set(Math.cos(a)*1.8,2.4+(j%3)*.7,Math.sin(a)*1.8);crystal.scale.y=2;g.add(crystal)}
+  }else if(zone==='skylands'){
+   for(let j=0;j<4;j++){const a=j*Math.PI/2;const col=new THREE.Mesh(new THREE.CylinderGeometry(.28,.44,5.8,8),accent);col.position.set(Math.cos(a)*2.1,3.1,Math.sin(a)*2.1);g.add(col)}
+   for(let j=0;j<3;j++){const ring=new THREE.Mesh(new THREE.TorusGeometry(2.5-j*.45,.15,8,32),glow);ring.position.y=6.2+j*.8;ring.rotation.x=Math.PI/2;g.add(ring)}
+  }else{
+   for(let j=0;j<4;j++){const a=j*Math.PI/2;const col=new THREE.Mesh(new THREE.CylinderGeometry(.32,.44,5.2,8),accent);col.position.set(Math.cos(a)*2.1,2.9,Math.sin(a)*2.1);g.add(col)}
+   const roof=new THREE.Mesh(new THREE.ConeGeometry(3.6,2.1,8),glow);roof.position.y=6.6;g.add(roof);
+  }
+  const lantern=new THREE.Mesh(new THREE.OctahedronGeometry(.4,0),glow);lantern.position.y=zone==='firelands'?7.5:8.1;g.add(lantern);
+ };
+ locations.forEach((loc,i)=>build(loc[0],loc[1],i));
+}
+function v350CreatureDetail(){
+ for(const e of enemies){if(!e.mesh||e.mesh.userData.v350)continue;
+  e.mesh.userData.v350=true;
+  const g=new THREE.Group();g.name='V350_Creature_Silhouette';e.mesh.add(g);
+  const c=(V330_COLORS[activeZone]||V330_COLORS.forest)[3];
+  const m=new THREE.MeshStandardMaterial({color:c,roughness:.65,metalness:.12});
+  const boss=!!e.boss,k=boss?1.35:.75;
+  if(activeZone==='forest'){
+   for(let side of [-1,1]){const antler=new THREE.Mesh(new THREE.CylinderGeometry(.08,.12,1.5,5),m);antler.position.set(side*.55*k,1.6*k,0);antler.rotation.z=side*.55;g.add(antler)}
+  }else if(activeZone==='valley'){
+   for(let j=0;j<3;j++){const fin=new THREE.Mesh(new THREE.ConeGeometry(.4*k,1.1*k,5),m);fin.position.set(0,(.7+j*.45)*k,-.5*k);fin.rotation.x=-.65;g.add(fin)}
+  }else if(activeZone==='dungeon'){
+   for(let j=0;j<5;j++){const a=j*Math.PI*2/5;const spike=new THREE.Mesh(new THREE.OctahedronGeometry(.34*k),m);spike.position.set(Math.cos(a)*.55*k,1.1*k,Math.sin(a)*.55*k);g.add(spike)}
+  }else if(activeZone==='firelands'){
+   const tail=new THREE.Mesh(new THREE.ConeGeometry(.35*k,1.7*k,6),m);tail.position.set(0,.7*k,-.95*k);tail.rotation.x=-1.2;g.add(tail);
+  }else if(activeZone==='snowlands'){
+   for(let side of [-1,1]){const tusk=new THREE.Mesh(new THREE.ConeGeometry(.15*k,.7*k,6),m);tusk.position.set(side*.42*k,.7*k,.5*k);tusk.rotation.x=Math.PI*.4;g.add(tusk)}
+  }else if(activeZone==='skylands'){
+   for(let side of [-1,1]){const wing=new THREE.Mesh(new THREE.ConeGeometry(.7*k,1.8*k,4),m);wing.position.set(side*.95*k,1.3*k,-.3*k);wing.rotation.z=side*.9;g.add(wing)}
+  }
+ }
+}
+
+
+// V3.6.0: unique sculpted silhouettes, body motion, visual-only (no collision).
+function v360Creatures(dt){
+ const zone=activeZone;
+ if(zone==='city')return;
+ const colors={forest:[0x3c7651,0x9acb76],valley:[0x367f87,0x93e1c9],dungeon:[0x4e5e79,0x9b8bdf],firelands:[0x873d2d,0xffae57],snowlands:[0x91b8d3,0xe1f5ff],skylands:[0x8b9dba,0xffe4a1]};
+ const cc=colors[zone]||colors.forest;
+ for(const e of enemies){
+  if(!e.active||!e.mesh)continue;
+  let rig=e.mesh.userData.v360Rig;
+  if(!rig){
+   // Hide the old sphere/cylinder monster visuals, preserving its original entity,
+   // AI, combat, health and label objects.
+   e.mesh.children.forEach(c=>{if(c.name!=='V360_Anatomy')c.visible=false});
+   rig=new THREE.Group();rig.name='V360_Anatomy';e.mesh.add(rig);e.mesh.userData.v360Rig=rig;
+   const boss=!!e.boss||e.region?.type===4;
+   const k=boss?1.55:1;
+   const skin=new THREE.MeshStandardMaterial({color:cc[0],roughness:.86,flatShading:true});
+   const accent=new THREE.MeshStandardMaterial({color:cc[1],roughness:.55,metalness:.14,emissive:cc[1],emissiveIntensity:.09,flatShading:true});
+   const eye=new THREE.MeshStandardMaterial({color:0xfff1ba,emissive:0xf3be63,emissiveIntensity:.35});
+   function part(geo,mat,x,y,z,sx=1,sy=1,sz=1){const m=new THREE.Mesh(geo,mat);m.position.set(x*k,y*k,z*k);m.scale.set(sx*k,sy*k,sz*k);rig.add(m);return m}
+   function orb(x,y,z,r,mat=skin){return part(new THREE.IcosahedronGeometry(r,1),mat,x,y,z)}
+   function spike(x,y,z,r,h,mat=accent){return part(new THREE.ConeGeometry(r,h,6),mat,x,y,z)}
+   const style=zone==='forest'?'stag':zone==='valley'?'serpent':zone==='dungeon'?'golem':zone==='firelands'?'drake':zone==='snowlands'?'wolf':'bird';
+   if(style==='stag'){
+    part(new THREE.DodecahedronGeometry(.75),skin,0,1.02,0,1.1,.8,1.45);orb(0,1.47,.85,.45);for(const side of [-1,1]){for(const z of [-.55,.55])part(new THREE.CylinderGeometry(.13,.18,1.0,6),skin,side*.53,.53,z);const a=spike(side*.35,2.2,.8,.12,1.2);a.rotation.z=side*.43;spike(side*.65,2.3,.8,.1,.7)}
+   }else if(style==='serpent'){
+    for(let i=0;i<5;i++)orb(0,.85+Math.sin(i*.7)*.25,-1+i*.48,.47-i*.045);
+    orb(0,1.28,1.05,.55);for(const side of [-1,1]){spike(side*.42,1.73,1.1,.22,.75);orb(side*.23,1.43,1.45,.1,eye)}
+    for(let i=0;i<4;i++)spike(0,1.35,-.75+i*.5,.18,.65);
+   }else if(style==='golem'){
+    part(new THREE.BoxGeometry(1.25,1.45,.95),skin,0,1.15,0);part(new THREE.BoxGeometry(.9,.75,.85),accent,0,2.2,.1);
+    for(const side of [-1,1]){part(new THREE.BoxGeometry(.45,1.25,.5),skin,side*.9,1.2,0);part(new THREE.BoxGeometry(.45,.8,.5),skin,side*.35,.35,0);orb(side*.22,2.3,.53,.1,eye)}
+    orb(0,1.22,.54,.3,accent);
+   }else if(style==='drake'){
+    part(new THREE.DodecahedronGeometry(.8),skin,0,1.1,0,1.1,.8,1.4);orb(0,1.55,1,.53);for(const side of [-1,1]){const w=spike(side*1.0,1.75,-.25,.75,2.1);w.rotation.z=side*1.12;spike(side*.35,2.12,1.02,.2,.8);orb(side*.24,1.63,1.44,.11,eye)}
+    for(let i=0;i<4;i++)spike(0,1.95,-.7+i*.4,.2,.65);
+   }else if(style==='wolf'){
+    part(new THREE.IcosahedronGeometry(.75,1),skin,0,1.05,0,1,.7,1.35);orb(0,1.35,.9,.49);part(new THREE.ConeGeometry(.28,.7,5),accent,0,1.13,1.48,1,.8,1);
+    for(const side of [-1,1]){spike(side*.37,1.97,.9,.24,.75);orb(side*.24,1.47,1.29,.09,eye);for(const z of [-.6,.65])part(new THREE.CylinderGeometry(.15,.18,.85,6),skin,side*.52,.45,z)}
+   }else{
+    orb(0,1.45,0,.8);orb(0,2.08,.48,.4);for(const side of [-1,1]){const w=part(new THREE.ConeGeometry(.75,2.3,4),accent,side*1.05,1.55,-.3);w.rotation.z=side*1.13;orb(side*.2,2.14,.78,.09,eye);part(new THREE.CylinderGeometry(.09,.12,.9,5),skin,side*.27,.45,0)}
+    spike(0,1.98,1.0,.16,.65);
+   }
+   if(boss){const halo=part(new THREE.TorusGeometry(1.65,.075,8,36),accent,0,2.8,0);halo.rotation.x=.35;rig.userData.halo=halo;rig.scale.setScalar(1.14)}
+   rig.userData.phase=Math.random()*6.28;
+   rig.userData.style=style;
+   rig.userData.baseScale=rig.scale.x;
+   rig.userData.animParts=rig.children.filter(c=>c.isMesh&&c.geometry&&['CylinderGeometry','ConeGeometry'].includes(c.geometry.type)).map((c,i)=>({mesh:c,baseX:c.rotation.x,baseZ:c.rotation.z,index:i}));
+   rig.userData.attackPulse=0;
+   rig.userData.hitPulse=0;
+  }
+  const u=rig.userData,phase=nowT*(u.style==='golem'?2.3:u.style==='bird'?7:5)+u.phase;
+  const bob=u.style==='bird'?.2:u.style==='serpent'?.12:.06;
+  rig.position.y=Math.sin(phase)*bob;
+  rig.rotation.y=(u.style==='serpent'?Math.sin(phase*.55)*.12:Math.sin(phase*.4)*.035);
+  rig.rotation.z=(u.style==='bird'?Math.sin(phase)*.075:Math.sin(phase*.6)*.025);
+  for(const part of u.animParts){
+   const wave=Math.sin(phase+part.index*Math.PI*.8);
+   const amp=u.style==='bird'?.28:u.style==='serpent'?.15:u.style==='golem'?.07:.18;
+   part.mesh.rotation.x=part.baseX+wave*amp;
+   if(u.style==='bird')part.mesh.rotation.z=part.baseZ+wave*.13;
+  }
+  u.attackPulse=Math.max(0,(u.attackPulse||0)-dt*2.5);
+  u.hitPulse=Math.max(0,(u.hitPulse||0)-dt*4);
+  const pulse=1+u.attackPulse*.13-u.hitPulse*.07;
+  rig.scale.setScalar(u.baseScale*pulse);
+  if(u.halo){u.halo.rotation.z+=dt*(.55+u.attackPulse*3);u.halo.rotation.y+=dt*.3;}
+ }
+}
+
+
+// V3.8.0: six regional boss telegraphs and regional architectural finishing.
+const V380_BOSS_COLORS={forest:0x84e48b,valley:0x7be5db,dungeon:0xb8a1ff,firelands:0xff8750,snowlands:0xb2e8ff,skylands:0xffe6a2};
+function v380BossEffects(dt){
+ if(activeZone==='city')return;
+ const color=V380_BOSS_COLORS[activeZone]||0xffd084;
+ for(const e of enemies){
+  if(!e.active||!e.mesh||!e.boss)continue;
+  let g=e.mesh.getObjectByName('V380_BossFx');
+  if(!g){
+   g=new THREE.Group();g.name='V380_BossFx';e.mesh.add(g);
+   const mat=new THREE.MeshBasicMaterial({color,transparent:true,opacity:.57,side:THREE.DoubleSide,depthWrite:false});
+   const ring=new THREE.Mesh(new THREE.TorusGeometry(1.5,.075,7,40),mat);ring.rotation.x=Math.PI/2;ring.position.y=.16;g.add(ring);
+   const outer=new THREE.Mesh(new THREE.TorusGeometry(2.15,.035,6,48),mat.clone());outer.rotation.x=Math.PI/2;outer.position.y=.10;g.add(outer);
+   for(let i=0;i<6;i++){
+    const shard=new THREE.Mesh(new THREE.OctahedronGeometry(.21,0),new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.38,roughness:.4}));
+    const a=i*Math.PI/3;shard.position.set(Math.cos(a)*1.9,1.3+(i%2)*.35,Math.sin(a)*1.9);g.add(shard);
+   }
+   g.userData={ring,outer,phase:Math.random()*6.28};
+  }
+  const u=g.userData,t=nowT+u.phase;
+  u.ring.rotation.z+=dt*.9;u.outer.rotation.z-=dt*.5;
+  const pulse=.93+Math.sin(t*2.4)*.10;
+  u.ring.scale.setScalar(pulse);
+  for(let i=2;i<g.children.length;i++){const shard=g.children[i];shard.position.y=1.3+(i%2)*.35+Math.sin(t*2+i)*.22;shard.rotation.y+=dt*.7;}
+  // A visual warning ring when the existing AI begins its attack animation.
+  const attacking=(e.mesh.userData.v360Rig?.userData?.attackPulse||0)>0;
+  u.outer.material.opacity=attacking?.85:.32;
+  u.outer.scale.setScalar(attacking?1.18:1);
+ }
+}
+function v380RegionalDetail(zone){
+ if(zone==='city'||world.getObjectByName('V380_RegionalDetail'))return;
+ const group=new THREE.Group();group.name='V380_RegionalDetail';world.add(group);
+ const colors=V330_COLORS[zone]||V330_COLORS.forest;
+ const stone=new THREE.MeshStandardMaterial({color:colors[1],roughness:.88,flatShading:true});
+ const roof=new THREE.MeshStandardMaterial({color:colors[2],roughness:.7,metalness:.12,flatShading:true});
+ const glow=new THREE.MeshStandardMaterial({color:colors[3],emissive:colors[3],emissiveIntensity:.3,roughness:.5});
+ const spots=[[-21,-31],[21,-31],[-22,29],[22,29]];
+ for(let i=0;i<spots.length;i++){
+  const [x,z]=spots[i],tower=new THREE.Group();tower.position.set(x,0,z);group.add(tower);
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(2.6,3.1,.55,8),stone);base.position.y=.27;tower.add(base);
+  for(let j=0;j<4;j++){
+   const a=j*Math.PI/2;const column=new THREE.Mesh(new THREE.CylinderGeometry(.25,.38,4.5,8),stone);
+   column.position.set(Math.cos(a)*1.7,2.75,Math.sin(a)*1.7);tower.add(column);
+  }
+  const upper=new THREE.Mesh(new THREE.CylinderGeometry(2.45,2.7,.28,8),roof);upper.position.y=5;tower.add(upper);
+  const cap=new THREE.Mesh(new THREE.ConeGeometry(3.1,2.4,zone==='dungeon'?6:8),roof);cap.position.y=6.25;tower.add(cap);
+  const gem=new THREE.Mesh(new THREE.OctahedronGeometry(.52),glow);gem.position.y=7.8;tower.add(gem);
+  if(zone==='forest'){
+   for(let j=0;j<3;j++){const b=new THREE.Mesh(new THREE.IcosahedronGeometry(.75,0),roof);b.position.set((j-1)*1.2,4.9,.3);tower.add(b)}
+  }else if(zone==='snowlands'||zone==='firelands'){
+   for(let j=0;j<4;j++){const crystal=new THREE.Mesh(new THREE.ConeGeometry(.36,1.6,5),glow);crystal.position.set(Math.cos(j*Math.PI/2)*2.3,1.35,Math.sin(j*Math.PI/2)*2.3);tower.add(crystal)}
+  }else if(zone==='skylands'){
+   const halo=new THREE.Mesh(new THREE.TorusGeometry(2.4,.08,8,32),glow);halo.position.y=7.4;halo.rotation.x=.45;tower.add(halo);
+  }
+ }
+}
+
+
+// V3.9.0 - regional boss choreography (visual only) and distinctive scene silhouettes.
+const V390_THEME={forest:0x77d69a,valley:0x7ce3da,dungeon:0xb6a0f7,firelands:0xff884b,snowlands:0xa6e6ff,skylands:0xffd98b};
+function v390RegionArchitecture(zone){
+ if(zone==='city'||world.getObjectByName('V390_Architecture'))return;
+ const group=new THREE.Group();group.name='V390_Architecture';world.add(group);
+ const color=V390_THEME[zone]||0xb0d6c0;
+ const rock=new THREE.MeshStandardMaterial({color:zone==='firelands'?0x57413b:zone==='snowlands'?0x92b9ce:0x6b7770,roughness:.9});
+ const accent=new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.18,roughness:.55});
+ const leaf=new THREE.MeshStandardMaterial({color:0x477b5b,roughness:.95});
+ // Set landmarks far from the central road and away from existing central interactions.
+ const spots=[[-39,-13],[39,13],[-39,12],[39,-13]];
+ spots.forEach(([x,z],idx)=>{
+  const site=new THREE.Group();site.position.set(x,0,z);group.add(site);
+  const foundation=new THREE.Mesh(new THREE.CylinderGeometry(3.6,4.2,.42,8),rock);foundation.position.y=.22;site.add(foundation);
+  if(zone==='forest'){
+   const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.7,1.15,8,8),rock);trunk.position.y=4.2;site.add(trunk);
+   for(let j=0;j<3;j++){const crown=new THREE.Mesh(new THREE.IcosahedronGeometry(3-j*.48,1),leaf);crown.position.set((j-1)*.65,7.5+j*1.3,0);site.add(crown)}
+  }else if(zone==='firelands'||zone==='snowlands'){
+   for(let j=0;j<5;j++){const h=4+(j*7+idx)%5;const spire=new THREE.Mesh(new THREE.ConeGeometry(.7+j*.12,h,5),j%2?rock:accent);spire.position.set(Math.cos(j*1.26)*1.7,h/2+.5,Math.sin(j*1.26)*1.7);site.add(spire)}
+  }else{
+   for(let j=0;j<6;j++){const a=j*Math.PI/3;const pillar=new THREE.Mesh(new THREE.CylinderGeometry(.29,.38,5.7,7),rock);pillar.position.set(Math.cos(a)*2.35,3.1,Math.sin(a)*2.35);site.add(pillar)}
+   const roof=new THREE.Mesh(new THREE.ConeGeometry(3.3,2.2,zone==='dungeon'?6:8),accent);roof.position.y=6.7;site.add(roof);
+   if(zone==='skylands'){const halo=new THREE.Mesh(new THREE.TorusGeometry(2.1,.12,8,28),accent);halo.position.y=8.5;halo.rotation.x=.45;site.add(halo)}
+  }
+  const lamp=new THREE.Mesh(new THREE.OctahedronGeometry(.48),accent);lamp.position.y=zone==='forest'?11:8.1;site.add(lamp);
+ });
+}
+function v390BossAnimation(dt){
+ if(activeZone==='city')return;
+ for(const e of enemies){if(!e.active||!e.boss||!e.mesh)continue;
+  let fx=e.mesh.getObjectByName('V390_BossAnimation');
+  if(!fx){fx=new THREE.Group();fx.name='V390_BossAnimation';e.mesh.add(fx);
+   const col=V390_THEME[activeZone]||0xffd38a;
+   const mat=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.5,side:THREE.DoubleSide,depthWrite:false});
+   const ring=new THREE.Mesh(new THREE.RingGeometry(1.8,2.05,36),mat);ring.rotation.x=-Math.PI/2;ring.position.y=.07;fx.add(ring);
+   const aura=new THREE.Mesh(new THREE.TorusGeometry(1.2,.065,6,36),mat.clone());aura.position.y=1.5;fx.add(aura);
+   fx.userData={ring,aura,seed:Math.random()*6.28};
+  }
+  const t=nowT+fx.userData.seed;
+  // Distinct visual rhythms: charging, ground pulses, hovering and wing sweeps.
+  const rate=activeZone==='firelands'?4:activeZone==='snowlands'?1.5:activeZone==='skylands'?3:2.2;
+  const beat=(Math.sin(t*rate)+1)*.5;
+  fx.userData.ring.scale.setScalar(.85+beat*.4);
+  fx.userData.ring.material.opacity=.18+beat*.35;
+  fx.userData.aura.rotation.y+=dt*(activeZone==='valley'?2.1:1.1);
+  fx.userData.aura.position.y=1.5+Math.sin(t*1.7)*.22;
+  const rig=e.mesh.userData.v360Rig;
+  if(rig){const lean=activeZone==='dungeon'?.055:activeZone==='firelands'?.13:.085;
+   rig.rotation.z=Math.sin(t*rate)*lean;
+   if(activeZone==='skylands')rig.rotation.y=Math.sin(t*.85)*.16;
+  }
+ }
+}
+
+resumeSaved();v330GiveTestPet();log('點選右下角「開啟仙境音樂」，主城與青木林會播放不同旋律。');log('《太初仙域》V1.7 三界開拓已啟動：赤焰荒原、玄冰雪域、九霄仙境、Lv.20 與 +10 裝備強化！');requestAnimationFrame(frame);
 } catch(err) { const el=document.getElementById('error'); el.style.display='grid'; el.style.whiteSpace='pre-wrap'; el.textContent='《太初仙域》初始化發生錯誤\n\n'+(err&&err.stack?err.stack:err)+'\n\n請把畫面截圖傳給我。'; console.error(err); }
 })();
 </script></body></html>

@@ -1,0 +1,20 @@
+/* 太初仙域 V1.9.9 — 七景氛圍美術增量層（主城保留原版） */
+(function(){'use strict';const T=window.THREE;if(!T)return;
+const themes={forest:{a:0x376d55,b:0x85b77c,glow:0xa2e4ac},valley:{a:0x4c9d89,b:0x9cd2b7,glow:0x8ff8e3},dungeon:{a:0x426c70,b:0x92b5a9,glow:0x72f3e3},firelands:{a:0x833e31,b:0xc67a47,glow:0xff9a47},snowlands:{a:0x83b2c3,b:0xd7f0f2,glow:0xb3f6ff},skylands:{a:0x84b59b,b:0xf2d7a2,glow:0xffe3a1}};
+const geometries={spire:new T.ConeGeometry(1,1,5),shard:new T.OctahedronGeometry(1,0),mound:new T.IcosahedronGeometry(1,0),ring:new T.TorusGeometry(1,.075,5,20)};
+function rng(seed){return()=>{seed|=0;seed=(seed+0x6d2b79f5)|0;let t=Math.imul(seed^seed>>>15,1|seed);t^=t+Math.imul(t^t>>>7,61|t);return((t^t>>>14)>>>0)/4294967296}}
+function material(color,emissive=false){return new T.MeshStandardMaterial({color,roughness:emissive?.48:.9,metalness:emissive?.22:.03,flatShading:true,emissive:emissive?color:0x000000,emissiveIntensity:emissive?.52:0,transparent:emissive,opacity:1})}
+function batch(parent,geo,items,color){if(!items.length)return;const m=new T.InstancedMesh(geo,material(color),items.length),d=new T.Object3D();items.forEach(([x,y,z,sx,sy,sz,ry],i)=>{d.position.set(x,y,z);d.scale.set(sx,sy,sz);d.rotation.set(0,ry,0);d.updateMatrix();m.setMatrixAt(i,d.matrix)});m.instanceMatrix.needsUpdate=true;m.frustumCulled=false;m.receiveShadow=true;parent.add(m)}
+function make(zone,world){if(!themes[zone]||!world||world.getObjectByName('V199_'+zone))return;const p=themes[zone],r=rng(19909+Object.keys(themes).indexOf(zone)*997),group=new T.Group();group.name='V199_'+zone;group.userData.motion=[];
+// Three layers of terrain accents, deliberately excluding the central road and entrance plazas.
+for(let layer=0;layer<3;layer++){const items=[];for(let i=0;i<90;i++){const x=r()*94-47,z=r()*92-46;if(Math.abs(x)<13||Math.hypot(x,z-40)<13||Math.hypot(x-8,z+39)<12)continue;const s=.2+r()*.55;items.push([x,.06+s*.18,z,s*(layer===0?2:1),s*(layer===1?1.8:.48),s*(layer===2?1.5:1),r()*6.28])}batch(group,layer===0?geometries.mound:layer===1?geometries.spire:geometries.shard,items,layer===0?p.a:layer===1?p.b:p.glow)}
+// Tall crystalline beacons form a readable silhouette along the outside of the travel corridor.
+const beaconMat=material(p.glow,true);for(const x of [-19,19])for(const z of [-29,-7,15,33]){const height=1.5+r()*1.2;const shard=new T.Mesh(geometries.shard,beaconMat);shard.position.set(x+(r()-.5)*2,height*.5,z);shard.scale.set(.33,height*.65,.33);shard.rotation.y=r()*6.28;group.add(shard);group.userData.motion.push({object:shard,y:shard.position.y,phase:r()*6.28,kind:0})}
+// Sparse suspended particles; no dynamic lights or shadows, keeping GPU cost predictable.
+const speckGeo=new T.IcosahedronGeometry(.12,0),speckMat=material(p.glow,true);for(let i=0;i<28;i++){const x=r()*86-43,z=r()*86-43;if(Math.abs(x)<9&&Math.abs(z)<36)continue;const orb=new T.Mesh(speckGeo,speckMat);orb.position.set(x,1.1+r()*3,z);orb.scale.setScalar(.5+r());group.add(orb);group.userData.motion.push({object:orb,y:orb.position.y,phase:r()*6.28,kind:1})}
+// The snowlands use icy facets; firelands volcanic spikes; skylands golden rings.
+if(zone==='skylands'){for(const [x,z] of [[-30,0],[30,0],[-29,-28],[29,27]]){const halo=new T.Mesh(geometries.ring,beaconMat);halo.position.set(x,4.3,z);halo.scale.setScalar(1.4);group.add(halo);group.userData.motion.push({object:halo,y:4.3,phase:r()*6.28,kind:2})}}
+world.add(group);return group}
+let current=null,elapsed=0;function activate(zone,world){current=make(zone,world)||world?.getObjectByName('V199_'+zone)||null;elapsed=0}
+function update(zone,dt){if(!current||current.name!=='V199_'+zone)return;elapsed+=Math.min(dt,.05);for(const a of current.userData.motion){a.object.position.y=a.y+Math.sin(elapsed*(a.kind===2?.48:1.05)+a.phase)*(a.kind===1?.23:.12);if(a.kind===2)a.object.rotation.y=elapsed*.22}}
+window.TaichuWorld199={activate,update};})();

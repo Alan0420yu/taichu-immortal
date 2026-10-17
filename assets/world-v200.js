@@ -1,0 +1,19 @@
+/* 太初仙域 V2.0.0 — 七景空氣透視與畫質控制。純視覺、不介入遊戲資料。 */
+(function(){'use strict';const T=window.THREE;if(!T)return;
+const themes={city:[0xf6d99b,0xf5f0d4],forest:[0x91d7a8,0xd1efba],valley:[0x9ce5d8,0xe5fff1],dungeon:[0x7ed5d1,0xb4e6d8],firelands:[0xff9256,0xffc47c],snowlands:[0xb4e9f6,0xffffff],skylands:[0xffdf9c,0xfdf1d3]};
+let quality=1,active=null,clock=0;try{quality=Math.max(0,Math.min(2,Number(localStorage.getItem('taichu_visual_quality')??1)||0))}catch(e){}
+const geo=new T.OctahedronGeometry(.12,0),matCache={};
+function rnd(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)|0;return(seed>>>0)/4294967296}}
+function create(zone,world){if(!world)return;const name='V200_'+zone;let g=world.getObjectByName(name);if(g)return g;g=new T.Group();g.name=name;g.userData.floats=[];g.userData.pulses=[];
+const colors=themes[zone]||themes.city,r=rnd(20000+Object.keys(themes).indexOf(zone)*103),count=zone==='city'?24:42;
+for(let c=0;c<2;c++){const color=colors[c],material=matCache[color]||(matCache[color]=new T.MeshBasicMaterial({color,transparent:true,opacity:.68,depthWrite:false}));const n=Math.floor(count/2),inst=new T.InstancedMesh(geo,material,n),dummy=new T.Object3D(),base=[];
+for(let i=0;i<n;i++){let x=(r()-.5)*90,z=(r()-.5)*90;if(Math.abs(x)<12&&Math.abs(z)<37)x+=x>=0?15:-15;const y=2.2+r()*5.8,s=.4+r()*.85;dummy.position.set(x,y,z);dummy.rotation.set(r()*3,r()*3,r()*3);dummy.scale.setScalar(s);dummy.updateMatrix();inst.setMatrixAt(i,dummy.matrix);base.push([x,y,z,s,r()*6.283]);}inst.instanceMatrix.needsUpdate=true;inst.frustumCulled=false;inst.userData.base=base;g.userData.floats.push(inst);g.add(inst)}
+// Tall landmarks remain outside the main walking corridor and have no collisions.
+if(zone!=='city'){const stone=new T.CylinderGeometry(.22,.44,2.1,6),cap=new T.OctahedronGeometry(.45,0);for(const x of [-36,36])for(const z of [-30,0,30]){const pillar=new T.Mesh(stone,new T.MeshStandardMaterial({color:colors[0],roughness:.85,flatShading:true}));pillar.position.set(x,1.05,z);g.add(pillar);const top=new T.Mesh(cap,new T.MeshStandardMaterial({color:colors[1],emissive:colors[0],emissiveIntensity:.35,flatShading:true}));top.position.set(x,2.48,z);g.add(top);g.userData.pulses.push(top)}}
+world.add(g);return g}
+function apply(){if(active)active.visible=quality>0;for(const m of active?.userData.floats||[])m.visible=quality===2;for(const p of active?.userData.pulses||[])p.visible=quality>0}
+function activate(zone,world){active=create(zone,world);clock=0;apply()}
+function update(zone,dt){if(!active||active.name!=='V200_'+zone||quality===0)return;clock+=Math.min(.05,dt);for(const [j,m] of active.userData.floats.entries()){if(!m.visible)continue;const d=new T.Object3D();m.userData.base.forEach(([x,y,z,s,phase],i)=>{d.position.set(x,y+Math.sin(clock*.8+phase)*.24,z);d.rotation.y=clock*.16+phase;d.scale.setScalar(s);d.updateMatrix();m.setMatrixAt(i,d.matrix)});m.instanceMatrix.needsUpdate=true}for(const [i,p] of active.userData.pulses.entries())p.rotation.y=clock*.45+i*.2}
+function setup(){const b=document.createElement('button');b.type='button';b.id='visualQuality200';b.setAttribute('aria-label','切換環境畫質');Object.assign(b.style,{position:'fixed',left:'12px',bottom:'12px',zIndex:'1200',padding:'8px 11px',borderRadius:'9px',border:'1px solid #d9c9a0',background:'rgba(24,44,42,.82)',color:'#f3e9ce',cursor:'pointer',font:'13px sans-serif'});const labels=['關閉','標準','精緻'];function render(){b.textContent='✦ 環境畫質：'+labels[quality]}b.addEventListener('click',()=>{quality=(quality+1)%3;try{localStorage.setItem('taichu_visual_quality',quality)}catch(e){}apply();render()});render();document.body.appendChild(b)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
+window.TaichuWorld200={activate,update};})();
